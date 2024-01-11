@@ -1,11 +1,23 @@
-import { Sidebar } from "./components/headers/Sidebar"
+import { Route, Routes } from "react-router-dom"
+
+import { Rutas } from "./routers/rutas"
 
 function StockApp() {
   
 
   return (
     <>
-    <Sidebar></Sidebar>
+   
+    
+      <Routes>
+        {
+              
+                  
+                      <Route path='/*' element={<Rutas />} />
+                      
+            }
+      </Routes>
+   
     </>
   )
 }
