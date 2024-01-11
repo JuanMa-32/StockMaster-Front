@@ -1,4 +1,9 @@
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+
+
+
 
 export const Sidebar = () => {
     return (
@@ -11,10 +16,7 @@ export const Sidebar = () => {
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item">
-                        <a href="#" className="nav-link active" aria-current="page">
-                            <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home" /></svg>
-                            Home
-                        </a>
+                    <button className="btn btn-light btn-sm" type="submit"><FontAwesomeIcon icon={faCircleCheck} /></button>
                     </li>
                     <li>
                         <a href="#" className="nav-link text-white">
