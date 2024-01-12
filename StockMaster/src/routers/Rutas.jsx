@@ -10,19 +10,19 @@ export const Rutas = () => {
   return (
     <>
 
-     <div className="d-flex">
-   <Sidebar></Sidebar>  
-   <div >
+      <div className="d-flex">
+        <Sidebar></Sidebar>
+        <div className='content-container'>
 
-   <Routes>
-    <Route path="/usuario" element={<UsuariosPage />}></Route>
-    <Route path="/clientePrincipal" element={<ClientePrincipal />}></Route>
-   </Routes>
-   </div>
-   </div>
+          <Routes>
+            <Route path="/usuarios" element={<UsuariosPage />}></Route>
+            <Route path="/clientePrincipal" element={<ClientePrincipal />}></Route>
+          </Routes>
+        </div>
+      </div>
 
-    
-     
+
+
 
     </>
   )
