@@ -1,6 +1,7 @@
 import { faBorderAll, faCartShopping, faChartSimple, faCircleCheck, faDollarSign, faGear, faMoneyCheckDollar, faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -44,11 +45,11 @@ export const Sidebar = () => {
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="nav-link text-white">
+                        <NavLink to={"clientePrincipal"} className="nav-link text-white">
                             <svg className="bi pe-none me-2" width="16" height="45"><use xlinkHref="#people-circle" /></svg>
                             <FontAwesomeIcon icon={faUser} style={{ marginRight: '8px' }}/>
                             Clientes
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
                         <a href="#" className="nav-link text-white">
