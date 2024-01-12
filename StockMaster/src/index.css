@@ -1,5 +1,12 @@
 .content-container {
-    flex-grow: 1; 
-    padding: 10px; 
-  }
-  
+  flex-grow: 1;
+  padding: 10px;
+}
+
+body {
+  background-color: #f1eff0;
+}
+
+
+
+
