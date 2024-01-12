@@ -1,3 +1,11 @@
+<<<<<<< HEAD
 body{
     background-color: #f1eff0;
 }
+=======
+.content-container {
+    flex-grow: 1; 
+    padding: 10px; 
+  }
+  
+>>>>>>> 8d23bb360c537b9e0840e8a757de50a06e9e055a

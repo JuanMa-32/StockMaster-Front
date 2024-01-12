@@ -13,11 +13,13 @@ export const ClientePrincipal = ()=>{
       </form>
     </div>
   </nav>
-  <div className="m-4">
+  <div className="float-right"style={{marginLeft:700}}>
     <button className="btn btn-outline-success btn-lg m-2" type="submit"><FontAwesomeIcon icon={faArrowDown} /></button>
     <button className="btn btn-outline-success btn-lg m-2" type="submit"><FontAwesomeIcon icon={faPlus} /> Nuevo Cliente</button>
   </div>
 </div>
+
+
 
 
     </>
