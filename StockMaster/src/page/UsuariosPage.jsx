@@ -5,7 +5,7 @@ import { Usuario } from '../components/usuarios/usuario'
 export const UsuariosPage = () => {
   return (
     <>
-    <NavBar/>
+    <NavBar titulo={'Usuarios'}/>
     <Usuario/>
     </>
   )
