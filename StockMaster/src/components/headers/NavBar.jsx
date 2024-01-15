@@ -6,7 +6,7 @@ export const NavBar = ({ titulo }) => {
             <header className="py-3 mb-3 border-bottom">
 
                 <div className="container-fluid d-grid gap-3 align-items-center" style={{ gridTemplateColumns: '1fr 2fr' }}>
-                    <h3>Usuarios</h3>
+                    <h3>{titulo}</h3>
 
                     <div className="d-flex align-items-center">
                     <form className="w-100 me-3" role="search">
