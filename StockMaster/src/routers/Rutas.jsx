@@ -26,6 +26,7 @@ export const Rutas = () => {
             <Route path="/clienteFormulario" element={<ClienteForm />}></Route>
             <Route path="/clienteFormulario/:id" element={<ClienteForm />}></Route>
           </Routes>
+          </div>
         </div>
       </AppProvider>
     </>
