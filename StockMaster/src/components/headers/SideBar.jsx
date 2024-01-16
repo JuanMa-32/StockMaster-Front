@@ -1,4 +1,4 @@
-import { faBorderAll, faCartShopping, faChartSimple, faCircleCheck, faDollarSign, faGear, faMoneyCheckDollar, faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faBorderAll, faCartShopping, faChartSimple, faCircleCheck, faDollarSign, faGear, faMoneyCheckDollar, faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
@@ -26,7 +26,7 @@ export const Sidebar = () => {
                     <li>
                         <a href="#" className="nav-link text-white">
                             <svg className="bi pe-none me-2" width="16" height="45"><use xlinkHref="#speedometer2" /></svg>
-                           
+                            <FontAwesomeIcon icon={faBars} style={{ marginRight: '8px' }}/>
                             Pedidos
                         </a>
                     </li>

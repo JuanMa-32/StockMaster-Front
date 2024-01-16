@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { UsuarioList } from './UsuarioList'
+import { AppContext } from './../../context/AppContext';
 
 export const Usuario = () => {
+  const { handlerOpenForm } = useContext(AppContext);
   return (
     <>
       <div style={{ background: 'white', borderRadius: '10px', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginBottom: '16px' }}>
-        <button type="button" className="btn" style={{ background: '#5ccc81', color: 'white' }}>+ Usuarios</button>
+        <button
+          className="btn"
+          onClick={handlerOpenForm}
+          style={{ background: '#5ccc81', color: 'white' }}>
+          + Usuarios
+        </button>
       </div>
 
       <UsuarioList />
