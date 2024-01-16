@@ -1,24 +1,31 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Sidebar } from '../components/headers/Sidebar'
-import { ClientePrincipal } from '../components/Clientes/ClientePrincipal'
+
 import { UsuariosPage } from '../page/UsuariosPage'
+
 import { AppProvider } from './../context/AppProvider';
+
+import { ClientePage } from '../page/ClientePage'
+import { ClienteForm } from '../components/Clientes/ClienteForm'
+
 
 
 
 export const Rutas = () => {
   return (
     <>
+
       <AppProvider>
         <div className="d-flex">
           <Sidebar></Sidebar>
           <div className='content-container'>
             <Routes>
               <Route path="/usuarios" element={<UsuariosPage />}></Route>
-              <Route path="/clientePrincipal" element={<ClientePrincipal />}></Route>
-            </Routes>
-          </div>
+            <Route path="/clientePrincipal" element={<ClientePage />}></Route>
+            <Route path="/clienteFormulario" element={<ClienteForm />}></Route>
+            <Route path="/clienteFormulario/:id" element={<ClienteForm />}></Route>
+          </Routes>
         </div>
       </AppProvider>
     </>
