@@ -6,34 +6,25 @@ export const ClienteForm = () => {
    
     <div>
          <h2>{titulo}</h2>
-<form >
-  <div class="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"/>
-  </div>
- 
-  <button type="submit" className="btn btn-primary">Submit</button>
-</form>
-<form  >
-  <div class="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"/>
-  </div>
- 
-  <button type="submit" className="btn btn-primary">Submit</button>
-</form>
+         <div className="col-md-3">
+         <form style={{background:'white',borderRadius:' solid 8px',width:'500px',height:'200px' }}>
+            
+            <div className="form-floating mb-3">
+                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+                <label htmlFor="floatingInput">Nombre</label>
+            </div>
+            <div className="form-floating">
+                <input type="password" className="form-control " id="floatingPassword" placeholder="Password" />
+                <label htmlFor="floatingPassword">Email</label>
+            </div>
+            <hr />
+            <div className="container">
+            <button type="button" className="btn btn-primary"  style={{ background: '#efefef', color: 'black' }}>Cancelar</button>
+            <button type="button" className="btn ms-2"  style={{ background: '#5ccc81', color: 'white' }} >Avanzar</button>
+            </div>
 
-
+        </form>
+        </div>
     </div>
   )
 }
