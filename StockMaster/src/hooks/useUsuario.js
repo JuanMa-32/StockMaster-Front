@@ -15,6 +15,9 @@ export const useUsuario = () => {
     const handlerCloseForm = () => {
         setvisibleForm(false)
     }
+    const handlerAddUsuario = (usuario) => {
+        
+    }
 
     return {
         //FUNCIONES
