@@ -1,22 +1,34 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UsuarioRow } from './UsuarioRow'
+import { AppContext } from './../../context/AppContext';
 
 export const UsuarioList = () => {
+
+    const {loadingUsuarios,usuarios} = useContext(AppContext)
+
+    useEffect(() => {
+        loadingUsuarios()
+    }, [])
+    
     return (
         <>
-            <table className="table table-hover table-striped " >
+            <table className="table table-hover table-light" >
                 <thead >
                     <tr >
-                        <th scope="col" style={{ color: '#939d97', fontFamily: 'serif' }}>Nombre</th>
-                        <th scope="col" style={{ color: '#939d97', fontFamily: 'serif' }}>Facturacion</th>
-                        <th scope="col" style={{ color: '#939d97', fontFamily: 'serif' }}>Ventas</th>
-                        <th scope="col" style={{ color: '#939d97', fontFamily: 'serif' }}>%</th>
+                        <th  style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Nombre</th>
+                        <th  style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Facturación</th>
+                        <th style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Ventas</th>
+                        <th  style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>%</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <UsuarioRow />
-                    </tr>
+                   {
+                    usuarios?.map(usuario => 
+                        <UsuarioRow key={usuario.id} usuario={usuario}/>
+                        )
+                   }
+                        
+                   
                 </tbody>
             </table>
         </>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Sidebar } from '../components/headers/Sidebar'
+
 
 import { UsuariosPage } from '../page/UsuariosPage'
 
@@ -9,6 +9,7 @@ import { AppProvider } from './../context/AppProvider';
 import { ClientePage } from '../page/ClientePage'
 import { ClienteForm } from '../components/Clientes/ClienteForm'
 import ClientFormPage from '../page/ClientFormPage';
+import { Sidebar } from './../components/headers/SideBar';
 
 
 
@@ -19,7 +20,7 @@ export const Rutas = () => {
 
       <AppProvider>
         <div className="d-flex">
-          <Sidebar></Sidebar>
+          <Sidebar/>
           <div className='content-container'>
             <Routes>
               <Route path="/usuarios" element={<UsuariosPage />}></Route>
@@ -29,6 +30,7 @@ export const Rutas = () => {
           </Routes>
           </div>
         </div>
+        
       </AppProvider>
     </>
   )

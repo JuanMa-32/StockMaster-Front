@@ -9,18 +9,23 @@ export const AppProvider = ({ children }) => {
         //FUNCIONES
         handlerOpenForm,
         handlerCloseForm,
+        handlerAddUsuario,
+        loadingUsuarios,
         //VARIABLES
-        visibleForm
+        visibleForm,
+        usuarios
     } = useUsuario();
     return (
         <AppContext.Provider value={
             {
-                //USUARIO
                 //FUNCIONES
                 handlerOpenForm,
                 handlerCloseForm,
+                handlerAddUsuario,
+                loadingUsuarios,
                 //VARIABLES
-                visibleForm
+                visibleForm,
+                usuarios
 
             }
         }>
