@@ -9,27 +9,31 @@ export const ClientePrincipal = () => {
     navegar('/clienteFormulario')
 
   }
-  return (<>
+  return (
+    <>
+   <div className="d-flex align-items-center justify-content-between" style={{ background: 'white', width: '100%', padding: '10px',borderRadius:'10px' }}>
+  <form className="d-flex" style={{width:'40%'}}>
+    <input
+      className="form-control me-2"
+      type="search"
+      placeholder="Buscar por nombre"
+      aria-label="Search"
+    />
+    <button className="btn" type="submit" style={{ background: '#63E6BE', color: 'white' }}>
+      <FontAwesomeIcon icon={faSearch} />
+    </button>
+  </form>
+  <div className="d-flex align-items-center">
+    <button className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}>
+      <FontAwesomeIcon icon={faDownload} />
+    </button>
+    <button onClick={verCliente} className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}>
+      <FontAwesomeIcon onClick={verCliente} icon={faPlus} /> Cliente
+    </button>
+  </div>
+</div>
+<ClienteLista />
 
-
-    <div className="d-flex align-items-center" style={{background: 'white'}}>
-      <nav className="navbar navbar-light bg-light">
-        <div className="container-fluid">
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search" />
-            <button className="btn" type="submit" style={{ background: '#63E6BE', color: 'white' }}><FontAwesomeIcon icon={faSearch} /></button>
-          </form>
-        </div>
-      </nav>
-      <div className="float-right" style={{ marginLeft: 500 }} >
-        <button className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}><FontAwesomeIcon icon={faDownload} /></button>
-        <button  onClick={verCliente} className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}><FontAwesomeIcon onClick={verCliente} icon={faPlus} /> Cliente</button>
-      </div>
-    </div>
-    <ClienteLista />
-
-
-
-  </>
+    </>
   )
 }

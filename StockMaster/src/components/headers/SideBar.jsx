@@ -33,11 +33,11 @@ export const Sidebar = () => {
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="nav-link text-white">
+                        <Link to={`/productos`} className="nav-link text-white">
                             <svg className="bi pe-none me-2" width="16" height="45"><use xlinkHref="#table" /></svg>
                             <FontAwesomeIcon icon={faBorderAll} style={{ marginRight: '8px' }} />
                             Productos
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#" className="nav-link text-white">
