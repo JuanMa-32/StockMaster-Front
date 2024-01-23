@@ -1,25 +1,58 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
 import { faArrowDown, faArrowUp, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ClienteFindById, ClienteSave, ClienteUpdate } from '../../services/ClienteService';
+import Swal from 'sweetalert2';
+import { useNavigate, useParams } from 'react-router-dom';
+
 
 
 export const ClienteForm = () => {
 
-    const [phoneNumber1, setPhoneNumber1] = useState('');
+  
+    const { id } = useParams('id');
+    const navigate = useNavigate();
+    const [cliente,setCliente]= useState({})
+    const cambiar = ({target})=>{
+        const {name,value}= target;
+        setCliente({
+            ...cliente,
+            [name]:value
+        })
 
-    const [phoneNumber2, setPhoneNumber2] = useState('');
+    }
+    const guardar = async (event)=>{
+        event.preventDefault();
 
-    const handleChange1 = (value, country, event) => {
-        const countryCode = event.target.getAttribute('data-country-code');
-        setPhoneNumber1(`+${countryCode} ${value}`);
-    };
+        const respuesta = await ClienteSave(cliente);
+        console.log(respuesta.data);
+        Swal.fire
+        ('Exito', 'El cliente fue creado con exito','success')
+      
+       navigate('/clientePrincipal')
+    }
+    const editar = async (event)=>{
+        event.preventDefault();
 
-    const handleChange2 = (value, country, event) => {
-        const countryCode = event.target.getAttribute('data-country-code');
-        setPhoneNumber2(`+${countryCode} ${value}`);
-    };
+       const respuesta = await ClienteUpdate(cliente);
+      
+        Swal.fire
+        ('Exito', 'El cliente fue editado con exito','success')
+      
+       navigate('/clientePrincipal')
+    }
+    useEffect(()=>{
+       if(id){
+       traerClientePorId(id)
+       }
+    },[])
+    const traerClientePorId= async(id)=>{
+        const respuesta = await ClienteFindById(id);
+        setCliente(respuesta.data)
+    }
+    // onChange={(value, country, event) => handleChange1(value, country, event)}
     return (
         <>
             <form>
@@ -31,12 +64,17 @@ export const ClienteForm = () => {
                                     <img src="https://github.com/mdo.png" alt="mdo" width="120" height="120" className="rounded-circle me-4" />
                                 </div>
                                 <div className="col-6 mb-3 d-flex mx-auto">
-                                    <input type="text" style={{borderRadius: '8px'}} 
+                                    <input name='nombre' onChange={cambiar} value={cliente.nombre} type="text" style={{borderRadius: '8px'}} 
                                     className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
                                     placeholder="Nombre" />
                                 </div>
+                                <div className="col-6 mb-3 d-flex mx-auto">
+                                    <input name='apellido' onChange={cambiar} value={cliente.apellido} type="text" style={{borderRadius: '8px'}} 
+                                    className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
+                                    placeholder="apellido" />
+                                </div>
                                 <div className="col-6 d-flex mx-auto">
-                                    <textarea className="form-control form-control-sm mx-auto" 
+                                    <textarea name='observaciones' onChange={cambiar} value={cliente.observaciones} className="form-control form-control-sm mx-auto" 
                                     style={{borderRadius: '8px'}}
                                     id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
@@ -46,33 +84,26 @@ export const ClienteForm = () => {
                                 <h5>Contacto</h5>
                                 <div className="mb-5" >
                                     <div className="col-6 mb-3 d-flex mx-auto">
-                                        <input type="email" 
+                                        <input  name='email' onChange={cambiar} value={cliente.email} type="email" 
                                         style={{borderRadius: '8px'}}
                                         className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
                                         placeholder="name@example.com" />
                                     </div>
                                     <div className="col-6 mb-3 d-flex mx-auto ">
-                                        <PhoneInput
+                                        <input
+                                        name='telefono' onChange={cambiar} value={cliente.telefono}
 
                                             placeholder="Número de teléfono"
-                                            inputStyle={{ width: '250px', height: '30px', marginLeft: '45px',borderRadius: '8px' }}
-                                            containerStyle={{ display: 'inline-block' }}
-                                            buttonStyle={{ borderLeft: '1px solid #ced4da', padding: '10px' }}
-                                            value={phoneNumber1}
-                                            onChange={(value, country, event) => handleChange1(value, country, event)}
+                                            
+                                            
+                                           
                                         />
                                     </div>
 
                                     <div className="col-6 mb-3 d-flex mx-auto">
-                                        <PhoneInput
-
-                                            placeholder="Número de teléfono"
-                                            inputStyle={{ width: '250px', height: '30px', marginLeft: '45px',borderRadius: '8px' }}
-                                            containerStyle={{ display: 'inline-block' }}
-                                            buttonStyle={{ borderLeft: '1px solid #ced4da', padding: '10px' }}
-                                            value={phoneNumber2}
-                                            onChange={(value, country, event) => handleChange2(value, country, event)}
-                                        />
+                                    <input name='password' onChange={cambiar} value={cliente.password} type="password" style={{borderRadius: '8px'}} 
+                                    className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
+                                    placeholder="password"   />
                                     </div>
                                 </div>
                             </div>
@@ -80,16 +111,23 @@ export const ClienteForm = () => {
                             <div className='p-4' style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
                                 <h5>Dirección</h5>
                                 <div className="col-6 mb-3 d-flex mx-auto">
-                                    <input type="text"
+                                    <input 
+                                    name='direccion' onChange={cambiar} value={cliente.direccion} 
+                                    type="text"
                                     style={{borderRadius: '8px'}}
                                     className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
                                      placeholder="Dirección" />
                                 </div>
                                 <div className="col-6 mb-3 d-flex mx-auto">
                                     <input type="text"
+                                    name='complemento' onChange={cambiar} value={cliente.complemento} 
                                     style={{borderRadius: '8px'}}
                                      className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
                                      placeholder="Complemento" />
+                                </div>
+                                <div className="col-6 mb-3 d-flex mx-auto">
+                                    {!id?   <button onClick={guardar} className='btn btn-success btn-mb'>Nuevo Cliente</button>:   <button onClick={editar} className='btn btn-success btn-mb'>Actualizar Cliente</button>}
+                                
                                 </div>
                             </div>
                         </div>
