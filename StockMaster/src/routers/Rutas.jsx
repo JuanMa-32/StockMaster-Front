@@ -10,6 +10,7 @@ import { ClientePage } from '../page/ClientePage'
 import { ClienteForm } from '../components/Clientes/ClienteForm'
 import ClientFormPage from '../page/ClientFormPage';
 import { Sidebar } from './../components/headers/SideBar';
+import { ProductoPage } from '../page/ProductoPage';
 
 
 
@@ -20,17 +21,18 @@ export const Rutas = () => {
 
       <AppProvider>
         <div className="d-flex">
-          <Sidebar/>
+          <Sidebar />
           <div className='content-container'>
             <Routes>
               <Route path="/usuarios" element={<UsuariosPage />}></Route>
-            <Route path="/clientePrincipal" element={<ClientePage />}></Route>
-            <Route path="/clienteFormulario" element={<ClientFormPage />}></Route>
-            <Route path="/clienteFormulario/:id" element={<ClienteForm />}></Route>
-          </Routes>
+              <Route path="/clientePrincipal" element={<ClientePage />}></Route>
+              <Route path="/clienteFormulario" element={<ClientFormPage />}></Route>
+              <Route path="/clienteFormulario/:id" element={<ClienteForm />}></Route>
+              <Route path="/productos" element={<ProductoPage></ProductoPage>}></Route>
+            </Routes>
           </div>
         </div>
-        
+
       </AppProvider>
     </>
   )

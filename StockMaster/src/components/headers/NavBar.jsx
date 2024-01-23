@@ -5,7 +5,7 @@ export const NavBar = ({ titulo }) => {
         <>
             <header className="py-3 mb-3 border-bottom ">
                 <div className="container-fluid d-flex justify-content-between align-items-center">
-                    <h3>{titulo}</h3>
+                    <h2>{titulo}</h2>
 
                     <div className="d-flex align-items-center">
                         <div className="flex-shrink-0 dropdown">

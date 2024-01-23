@@ -31,10 +31,14 @@ export const ClienteForm = () => {
                                     <img src="https://github.com/mdo.png" alt="mdo" width="120" height="120" className="rounded-circle me-4" />
                                 </div>
                                 <div className="col-6 mb-3 d-flex mx-auto">
-                                    <input type="text" className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" placeholder="Nombre" />
+                                    <input type="text" style={{borderRadius: '8px'}} 
+                                    className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
+                                    placeholder="Nombre" />
                                 </div>
                                 <div className="col-6 d-flex mx-auto">
-                                    <textarea className="form-control form-control-sm mx-auto" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea className="form-control form-control-sm mx-auto" 
+                                    style={{borderRadius: '8px'}}
+                                    id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
 
@@ -42,13 +46,16 @@ export const ClienteForm = () => {
                                 <h5>Contacto</h5>
                                 <div className="mb-5" >
                                     <div className="col-6 mb-3 d-flex mx-auto">
-                                        <input type="email" className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" placeholder="name@example.com" />
+                                        <input type="email" 
+                                        style={{borderRadius: '8px'}}
+                                        className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
+                                        placeholder="name@example.com" />
                                     </div>
                                     <div className="col-6 mb-3 d-flex mx-auto ">
                                         <PhoneInput
 
                                             placeholder="Número de teléfono"
-                                            inputStyle={{ width: '250px', height: '30px', marginLeft: '45px' }}
+                                            inputStyle={{ width: '250px', height: '30px', marginLeft: '45px',borderRadius: '8px' }}
                                             containerStyle={{ display: 'inline-block' }}
                                             buttonStyle={{ borderLeft: '1px solid #ced4da', padding: '10px' }}
                                             value={phoneNumber1}
@@ -60,7 +67,7 @@ export const ClienteForm = () => {
                                         <PhoneInput
 
                                             placeholder="Número de teléfono"
-                                            inputStyle={{ width: '250px', height: '30px', marginLeft: '45px' }}
+                                            inputStyle={{ width: '250px', height: '30px', marginLeft: '45px',borderRadius: '8px' }}
                                             containerStyle={{ display: 'inline-block' }}
                                             buttonStyle={{ borderLeft: '1px solid #ced4da', padding: '10px' }}
                                             value={phoneNumber2}
@@ -71,12 +78,18 @@ export const ClienteForm = () => {
                             </div>
 
                             <div className='p-4' style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-                                <h5>Direccion</h5>
+                                <h5>Dirección</h5>
                                 <div className="col-6 mb-3 d-flex mx-auto">
-                                    <input type="text" className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" placeholder="Dirección" />
+                                    <input type="text"
+                                    style={{borderRadius: '8px'}}
+                                    className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
+                                     placeholder="Dirección" />
                                 </div>
                                 <div className="col-6 mb-3 d-flex mx-auto">
-                                    <input type="text" className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" placeholder="Complemento" />
+                                    <input type="text"
+                                    style={{borderRadius: '8px'}}
+                                     className="form-control form-control-sm mx-auto" id="exampleFormControlInput1" 
+                                     placeholder="Complemento" />
                                 </div>
                             </div>
                         </div>
