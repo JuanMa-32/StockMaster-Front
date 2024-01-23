@@ -3,12 +3,11 @@ import React from 'react'
 export const NavBar = ({ titulo }) => {
     return (
         <>
-            <header className="py-3 mb-3 border-bottom">
+            <header className="py-3 mb-3 border-bottom ">
                 <div className="container-fluid d-flex justify-content-between align-items-center">
                     <h3>{titulo}</h3>
 
                     <div className="d-flex align-items-center">
-                        {/* Mantener el dropdown a la derecha */}
                         <div className="flex-shrink-0 dropdown">
                             <button className="btn d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle me-2" />

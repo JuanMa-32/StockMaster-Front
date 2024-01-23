@@ -10,7 +10,7 @@ export const Usuario = () => {
         <button
           className="btn"
           onClick={handlerOpenForm}
-          style={{ background: '#5ccc81', color: 'white' }}>
+          style={{ background: '#63E6BE', color: 'white' }}>
           + Usuarios
         </button>
       </div>

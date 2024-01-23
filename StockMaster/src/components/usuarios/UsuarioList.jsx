@@ -4,31 +4,29 @@ import { AppContext } from './../../context/AppContext';
 
 export const UsuarioList = () => {
 
-    const {loadingUsuarios,usuarios} = useContext(AppContext)
+    const { loadingUsuarios, usuarios } = useContext(AppContext)
 
     useEffect(() => {
         loadingUsuarios()
     }, [])
-    
+
     return (
         <>
             <table className="table table-hover table-light" >
                 <thead >
                     <tr >
-                        <th  style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Nombre</th>
-                        <th  style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Facturación</th>
-                        <th style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Ventas</th>
-                        <th  style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>%</th>
+                        <th className="col-6" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Nombre</th>
+                        <th className="col-1" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Facturación</th>
+                        <th className="col-1" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Ventas</th>
+                        <th className="col-1" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>%</th>
                     </tr>
                 </thead>
                 <tbody>
-                   {
-                    usuarios?.map(usuario => 
-                        <UsuarioRow key={usuario.id} usuario={usuario}/>
+                    {
+                        usuarios?.map(usuario =>
+                            <UsuarioRow key={usuario.id} usuario={usuario} />
                         )
-                   }
-                        
-                   
+                    }
                 </tbody>
             </table>
         </>
