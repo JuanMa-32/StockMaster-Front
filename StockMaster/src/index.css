@@ -5,15 +5,15 @@ body{
 
 .content-container {
   flex-grow: 1;
-  padding: 10px;
+  padding: 20px;
 }
 
 
 
 input:focus, textarea:focus {
-  border-color: green !important;
-  box-shadow: 0 0 10px rgba(0, 128, 0, 0.5) !important;
-}
+    border-color: #63E6BE !important;
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5) !important;
+  }
 
   /* //MODAL */
   .abrir-modal {

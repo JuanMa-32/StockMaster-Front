@@ -1,4 +1,4 @@
-import { faArrowDown, faMagnifyingGlass, faPlus, faSearch, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faArrowDown, faDownload, faMagnifyingGlass, faPlus, faSearch, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { ClienteLista } from "./ClienteLista"
 import { useNavigate } from "react-router-dom"
@@ -12,18 +12,18 @@ export const ClientePrincipal = () => {
   return (<>
 
 
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center" style={{background: 'white'}}>
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <form className="d-flex">
             <input className="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search" />
-            <button className="btn btn-outline-success" type="submit"><FontAwesomeIcon icon={faSearch} /></button>
+            <button className="btn" type="submit" style={{ background: '#63E6BE', color: 'white' }}><FontAwesomeIcon icon={faSearch} /></button>
           </form>
         </div>
       </nav>
-      <div className="float-right" style={{ marginLeft: 500 }}>
-        <button className="btn btn-outline-success btn-lg m-1"><FontAwesomeIcon icon={faArrowDown} /></button>
-        <button  onClick={verCliente} className="btn btn-outline-success btn-lg m-1"><FontAwesomeIcon onClick={verCliente} icon={faPlus} /> Nuevo Cliente</button>
+      <div className="float-right" style={{ marginLeft: 500 }} >
+        <button className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}><FontAwesomeIcon icon={faDownload} /></button>
+        <button  onClick={verCliente} className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}><FontAwesomeIcon onClick={verCliente} icon={faPlus} /> Cliente</button>
       </div>
     </div>
     <ClienteLista />
