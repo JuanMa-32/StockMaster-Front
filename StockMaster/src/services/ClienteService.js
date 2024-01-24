@@ -32,8 +32,19 @@ export const ClienteSave = async (cliente)=>{
 export const ClienteUpdate = async(cliente)=>{
     console.log(cliente);
     try {
-        return await axios.put(`${url}/${id}`,cliente)
+        console.log('hola');
+        const respuesta= await axios.put(`${url}/${cliente.id}`,cliente)
+        console.log(respuesta);
         
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}
+export const ClienteDelete = async (id)=>{
+    try {
+        return await axios.delete(`${url}/${id}`)
+    
     } catch (error) {
         return error;
     }
