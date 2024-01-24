@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ClienteAll } from '../../services/ClienteService'
+import { ClienteAll, ClienteDelete } from '../../services/ClienteService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +15,7 @@ export const ClienteLista = () => {
     //  console.log(clientes);
 
   }
-  const eliminarCliente = () => {
+  const eliminarCliente = async(id) => {
     Swal.fire({
       title: "Eliminar?",
       text: "Esta Seguro que desea eliminar",
@@ -24,8 +24,10 @@ export const ClienteLista = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
+        setClientes(clientes.filter(u=>u.id!=id))
+       await ClienteDelete(id)
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -71,7 +73,7 @@ export const ClienteLista = () => {
                 <FontAwesomeIcon onClick={() => verCliente(c.id)} icon={faMagnifyingGlass} />
               </td>
               <td>
-                <FontAwesomeIcon onClick={eliminarCliente} icon={faTrash} />
+                <FontAwesomeIcon onClick={()=>eliminarCliente(c.id)} icon={faTrash} />
               </td>
             </tr>
           ))}
