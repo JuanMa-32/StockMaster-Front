@@ -33,7 +33,7 @@ export const ClientePrincipal = () => {
    <div className="d-flex align-items-center justify-content-between" style={{ background: 'white', width: '100%', padding: '10px',borderRadius:'10px' }}>
   <form className="d-flex" style={{width:'40%'}}>
     <input
-    value={filtro}
+   
       className="form-control me-2"
       type="search"
       placeholder="Buscar por nombre"
