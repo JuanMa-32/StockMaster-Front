@@ -1,39 +1,52 @@
+import { useReducer } from "react"
+import { ClienteReducer } from "../reducers/ClienteReducer"
+import { ClienteAll, ClienteSave, ClienteUpdate } from "../services/ClienteService"
+
 export const UseCliente = () => {
 
     //Estados
-    const [visibleForm, setvisibleForm] = useState(false)
-    const [usuarios, dispatch] = useReducer(UsuarioReducer, [])
+   
+    const [clientes, dispatch] = useReducer(ClienteReducer, [])
 
 
 
     
-    const handlerCloseForm = () => {
-        setvisibleForm(false)
+ 
+    const addCliente =async (cliente)=>{
+        let response
+        try {
+            if(cliente.id){
+              response = await ClienteUpdate(cliente)  
+              //console.log(response);
+            }else{
+                
+                response = await ClienteSave(cliente);
+              //  console.log(response);
+            }
+             
+            dispatch({
+                type:(cliente.id===0)?'addCliente':'updateCliente',
+                payload: response.data
+                    })
+        } catch (error) {
+          console.log(error);  
+        }
     }
-    const handlerAddUsuario = async (usuario) => {
-        const response = await save(usuario);
-       dispatch({
-        type: 'addUsuario',
-        payload: response.data
-       })
-       handlerCloseForm()
-    }
-    const loadingUsuarios = async () => {
-        const response = await findAll();
+    const todosClientes = async () => {
+        const response = await ClienteAll();
         dispatch({
-            type: 'loadingUsuarios',
+            type: 'listaCliente',
             payload: response.data
         })
     }
 
     return {
         //FUNCIONES
-        handlerOpenForm,
-        handlerCloseForm,
-        handlerAddUsuario,
-        loadingUsuarios,
+        
+       addCliente,
+        todosClientes,
         //VARIABLES
-        visibleForm,
-        usuarios
+       
+        clientes
     }
 }

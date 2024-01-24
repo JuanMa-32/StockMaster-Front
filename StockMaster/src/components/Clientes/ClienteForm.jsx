@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
 import { faArrowDown, faArrowUp, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ClienteFindById, ClienteSave, ClienteUpdate } from '../../services/ClienteService';
+import { ClienteFindById } from '../../services/ClienteService';
 import Swal from 'sweetalert2';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
 
 
 
 export const ClienteForm = () => {
-
+    const { addCliente
+         } = useContext(AppContext);
   
     const { id } = useParams('id');
     const navigate = useNavigate();
@@ -26,8 +28,8 @@ export const ClienteForm = () => {
     const guardar = async (event)=>{
         event.preventDefault();
 
-        const respuesta = await ClienteSave(cliente);
-        console.log(respuesta.data);
+        addCliente(cliente);
+       
         Swal.fire
         ('Exito', 'El cliente fue creado con exito','success')
       
@@ -36,7 +38,7 @@ export const ClienteForm = () => {
     const editar = async (event)=>{
         event.preventDefault();
 
-       const respuesta = await ClienteUpdate(cliente);
+      addCliente(cliente);
       
         Swal.fire
         ('Exito', 'El cliente fue editado con exito','success')
