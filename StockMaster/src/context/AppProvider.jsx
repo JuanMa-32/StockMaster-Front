@@ -1,6 +1,7 @@
 import { useUsuario } from "../hooks/useUsuario"
 import React from 'react';
 import { AppContext } from "./AppContext"
+import { useProducto } from "../hooks/useProducto";
 
 
 
@@ -15,9 +16,17 @@ export const AppProvider = ({ children }) => {
         visibleForm,
         usuarios
     } = useUsuario();
+
+    const {
+        //FUNCIONES
+        getProductos,
+        //VARIABLES
+        productos
+    } = useProducto();
     return (
         <AppContext.Provider value={
             {
+                //USUARIO
                 //FUNCIONES
                 handlerOpenForm,
                 handlerCloseForm,
@@ -25,7 +34,13 @@ export const AppProvider = ({ children }) => {
                 loadingUsuarios,
                 //VARIABLES
                 visibleForm,
-                usuarios
+                usuarios,
+
+                //PRODUCTOS
+                //FUNCIONES
+                getProductos,
+                //VARIABLES
+                productos
 
             }
         }>

@@ -11,6 +11,7 @@ import { ClienteForm } from '../components/Clientes/ClienteForm'
 import ClientFormPage from '../page/ClientFormPage';
 import { Sidebar } from './../components/headers/SideBar';
 import { ProductoPage } from '../page/ProductoPage';
+import { ProductoFormPage } from '../page/ProductoFormPage';
 
 
 
@@ -29,6 +30,7 @@ export const Rutas = () => {
               <Route path="/clienteFormulario" element={<ClientFormPage />}></Route>
               <Route path="/clienteFormulario/:id" element={<ClienteForm />}></Route>
               <Route path="/productos" element={<ProductoPage></ProductoPage>}></Route>
+              <Route path="/producto/create" element={<ProductoFormPage></ProductoFormPage>}> </Route>
             </Routes>
           </div>
         </div>
