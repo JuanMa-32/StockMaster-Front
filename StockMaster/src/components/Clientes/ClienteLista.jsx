@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ClienteAll, ClienteDelete } from '../../services/ClienteService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { AppContext } from '../../context/AppContext'
 
 export const ClienteLista = () => {
   const navegar = useNavigate()
-  const [clientes, setClientes] = useState([])
-  const traerTodosLosClientes = async () => {
-    const respuesta = await ClienteAll()
-
-    setClientes(respuesta.data)
-    //  console.log(clientes);
-
-  }
+  const { todosClientes, clientes } = useContext(AppContext)
+  
+  
   const eliminarCliente = async(id) => {
     Swal.fire({
       title: "Eliminar?",
@@ -26,7 +22,7 @@ export const ClienteLista = () => {
       confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        setClientes(clientes.filter(u=>u.id!=id))
+       todosClientes();
        await ClienteDelete(id)
         Swal.fire({
           title: "Deleted!",
@@ -45,7 +41,7 @@ export const ClienteLista = () => {
 
   }
   useEffect(() => {
-    traerTodosLosClientes()
+    todosClientes()
   }, [])
 
   return (

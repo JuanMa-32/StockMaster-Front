@@ -2,6 +2,7 @@ import { useUsuario } from "../hooks/useUsuario"
 import React from 'react';
 import { AppContext } from "./AppContext"
 import { useProducto } from "../hooks/useProducto";
+import { UseCliente } from "../hooks/UseCliente";
 
 
 
@@ -16,7 +17,13 @@ export const AppProvider = ({ children }) => {
         visibleForm,
         usuarios
     } = useUsuario();
-
+    const {
+        addCliente,
+        todosClientes,
+        //VARIABLES
+       
+        clientes
+    }= UseCliente();
     const {
         //FUNCIONES
         getProductos,
@@ -40,7 +47,13 @@ export const AppProvider = ({ children }) => {
                 //FUNCIONES
                 getProductos,
                 //VARIABLES
-                productos
+                productos,
+                //clientes
+                addCliente,
+                todosClientes,
+                //VARIABLES
+               
+                clientes
 
             }
         }>
