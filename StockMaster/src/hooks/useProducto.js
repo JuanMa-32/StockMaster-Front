@@ -1,6 +1,6 @@
 import { useReducer } from "react"
 import { ProductoReducer } from "../reducers/ProductoReducer"
-import { findAllProductos } from "../services/ProductoService"
+import { findAllProductos, saveProducto } from "../services/ProductoService"
 
 
 export const useProducto = () => {
@@ -13,10 +13,19 @@ export const useProducto = () => {
         payload:response.data
     })
   }
+
+  const addProducto = async (producto) => {
+    try {
+      const response = await saveProducto(producto);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
     return {
         //FUNCIONES
         getProductos,
+        addProducto,
         //VARIABLES
         productos
   }

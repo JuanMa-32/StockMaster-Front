@@ -42,11 +42,12 @@ export const ClienteLista = ({clientes}) => {
         <thead>
           <tr>
 
-            <th scope="col" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Nombre</th>
-            <th scope="col" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Celular</th>
-            <th scope="col" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Email</th>
-            <th scope="col" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Ver</th>
-            <th scope="col" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Eliminar</th>
+            <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Nombre</th>
+            <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Celular/WhatsApp</th>
+            <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Email</th>
+            <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Saldo actual</th>
+            <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}></th>
+            <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}></th>
 
           </tr>
         </thead>
@@ -57,8 +58,10 @@ export const ClienteLista = ({clientes}) => {
               <td>{c.nombre}</td>
               <td>{c.telefono}</td>
               <td>{c.email}</td>
+              <td>completar</td>
+              <td></td>
               <td>
-                <FontAwesomeIcon onClick={() => verCliente(c.id)} icon={faMagnifyingGlass} />
+               obs
               </td>
               <td>
                 <FontAwesomeIcon onClick={()=>eliminarCliente(c.id)} icon={faTrash} />
