@@ -12,6 +12,7 @@ import ClientFormPage from '../page/ClientFormPage';
 import { Sidebar } from './../components/headers/SideBar';
 import { ProductoPage } from '../page/ProductoPage';
 import { ProductoFormPage } from '../page/ProductoFormPage';
+import { TransaccionPage } from '../page/TransaccionPage';
 
 
 
@@ -31,6 +32,7 @@ export const Rutas = () => {
               <Route path="/clienteFormulario/:id" element={<ClienteForm />}></Route>
               <Route path="/productos" element={<ProductoPage></ProductoPage>}></Route>
               <Route path="/producto/create" element={<ProductoFormPage></ProductoFormPage>}> </Route>
+              <Route path="/ventas" element={<TransaccionPage/>}> </Route>
             </Routes>
           </div>
         </div>
