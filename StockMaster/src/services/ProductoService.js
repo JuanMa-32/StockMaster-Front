@@ -9,3 +9,12 @@ export const findAllProductos = async () => {
         console.log(error);
     }
 }
+
+export const saveProducto = async (producto) => {
+    try {
+        const response = await axios.post(`${URL}`,producto)
+        return response
+    } catch (error) {
+        throw error
+    }
+}

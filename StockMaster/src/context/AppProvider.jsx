@@ -28,6 +28,7 @@ export const AppProvider = ({ children }) => {
     const {
         //FUNCIONES
         getProductos,
+        addProducto,
         //VARIABLES
         productos
     } = useProducto();
@@ -54,6 +55,7 @@ export const AppProvider = ({ children }) => {
                 //PRODUCTOS
                 //FUNCIONES
                 getProductos,
+                addProducto,
                 //VARIABLES
                 productos,
 

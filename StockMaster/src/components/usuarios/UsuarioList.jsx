@@ -15,10 +15,10 @@ export const UsuarioList = () => {
             <table className="table table-hover table-light" >
                 <thead >
                     <tr >
-                        <th className="col-6" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Nombre</th>
-                        <th className="col-1" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Facturación</th>
-                        <th className="col-1" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>Ventas</th>
-                        <th className="col-1" style={{ color: '#888888', fontFamily: 'Arial, Helvetica, sans-serif' }}>%</th>
+                        <th className="col-6"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Nombre</th>
+                        <th className="col-1"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Facturación</th>
+                        <th className="col-1"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Ventas</th>
+                        <th className="col-1"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>%</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,13 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const UsuarioRow = ({ usuario }) => {
+    const navigate=useNavigate()
+    const usuarioFindId=(idUsuario) => {
+        navigate(`/usuario/${idUsuario}`)
+    }
     return (
         <>
-            <tr>
+            <tr onClick={() =>usuarioFindId(usuario.id) }>
                 <td >{usuario.nombre} </td>
-                <td>$ 100</td>
-                <td>{usuario.email}</td>
-                <td>%100</td>
+                <td>$ {usuario.facturacion}</td>
+                <td>{usuario.ventas}</td>
+                <td>%</td>
             </tr>
         </>
     )

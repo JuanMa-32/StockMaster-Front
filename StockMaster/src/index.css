@@ -35,7 +35,17 @@ body{
     color: #777;
   }
   
-
+/* Estilo personalizado para el foco en el input */
+.form-control:focus::placeholder {
+    transform: translateY(-50%);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Estilo para el placeholder cuando no está enfocado */
+  .form-control::placeholder {
+    transition: transform 0.2s ease-in-out;
+  }
+  
   
   
 

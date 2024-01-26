@@ -14,7 +14,7 @@ export const TransaccionRow = ({transaccion}) => {
     const navegate = useNavigate()
 
 const handleClick = (transaccionId) => {
- navegate(`/usuarios`)
+ navegate(`/usuarios/${transaccionId}`)
 };
 
     return (
