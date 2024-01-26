@@ -55,11 +55,11 @@ export const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <a href="#" className="nav-link text-white">
+                        <Link to={`/ventas`} className="nav-link text-white">
                             <svg className="bi pe-none me-2" width="16" height="45"><use xlinkHref="#people-circle" /></svg>
                             <FontAwesomeIcon icon={faDollarSign} style={{ marginRight: '8px' }} />
                             Transacciones
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#" className="nav-link text-white">

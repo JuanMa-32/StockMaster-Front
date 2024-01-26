@@ -3,6 +3,7 @@ import React from 'react';
 import { AppContext } from "./AppContext"
 import { useProducto } from "../hooks/useProducto";
 import { UseCliente } from "../hooks/UseCliente";
+import { UseTransaccion } from './../hooks/UseTransaccion';
 
 
 
@@ -21,15 +22,22 @@ export const AppProvider = ({ children }) => {
         addCliente,
         todosClientes,
         //VARIABLES
-       
+
         clientes
-    }= UseCliente();
+    } = UseCliente();
     const {
         //FUNCIONES
         getProductos,
         //VARIABLES
         productos
     } = useProducto();
+
+    const {
+        //fUNCIONES
+        getTransacciones,
+        //VARIABLES
+        transacciones
+    } = UseTransaccion();
     return (
         <AppContext.Provider value={
             {
@@ -48,12 +56,18 @@ export const AppProvider = ({ children }) => {
                 getProductos,
                 //VARIABLES
                 productos,
+
                 //clientes
                 addCliente,
                 todosClientes,
                 //VARIABLES
-               
-                clientes
+                clientes,
+
+                //TRANSACCIONES
+                //fUNCIONES
+                getTransacciones,
+                //VARIABLES
+                transacciones
 
             }
         }>

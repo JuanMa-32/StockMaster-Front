@@ -2,14 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ClienteAll, ClienteDelete } from '../../services/ClienteService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import { AppContext } from '../../context/AppContext'
 
-export const ClienteLista = () => {
-  const navegar = useNavigate()
-  const { todosClientes, clientes } = useContext(AppContext)
-  
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom'
+
+
+export const ClienteLista = ({clientes}) => {
+  const navegate=useNavigate()
   
   const eliminarCliente = async(id) => {
     Swal.fire({
@@ -32,17 +31,10 @@ export const ClienteLista = () => {
       }
     });
   }
-  const verCliente = (id) => {
-    if (id) {
-      navegar(`/clienteFormulario/${id}`)
-    } else {
-      navegar('/clienteFormulario')
-    }
-
-  }
-  useEffect(() => {
-    todosClientes()
-  }, [])
+ 
+  const verCliente = (clienteid) => {
+    navegate(`/clienteFormulario/${clienteid}`)
+   };
 
   return (
     <div>
@@ -60,7 +52,7 @@ export const ClienteLista = () => {
         </thead>
         <tbody>
           {clientes?.map(c => (
-            <tr key={c.id}>
+            <tr key={c.id} onClick={() => verCliente(c.id)}>
 
               <td>{c.nombre}</td>
               <td>{c.telefono}</td>
