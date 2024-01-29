@@ -20,11 +20,11 @@ export const Sidebar = () => {
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
                     <li className="nav-item">
-                        <a href="#" className="nav-link text-white">
+                        <Link to={`/vender`} className="nav-link text-white">
                             <svg className="bi pe-none me-2" width="16" height="45"><use xlinkHref="#speedometer2" /></svg>
                             <FontAwesomeIcon icon={faCircleCheck} style={{ marginRight: '8px' }} />
                             Vender
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#" className="nav-link text-white">

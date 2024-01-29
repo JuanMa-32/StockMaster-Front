@@ -13,6 +13,7 @@ import { Sidebar } from './../components/headers/SideBar';
 import { ProductoPage } from '../page/ProductoPage';
 import { ProductoFormPage } from '../page/ProductoFormPage';
 import { TransaccionPage } from '../page/TransaccionPage';
+import { VentaPage } from '../page/VentaPage';
 
 
 
@@ -33,6 +34,8 @@ export const Rutas = () => {
               <Route path="/productos" element={<ProductoPage></ProductoPage>}></Route>
               <Route path="/producto/create" element={<ProductoFormPage></ProductoFormPage>}> </Route>
               <Route path="/ventas" element={<TransaccionPage/>}> </Route>
+              <Route path="/vender" element={<VentaPage/>}> </Route>
+              
             </Routes>
           </div>
         </div>

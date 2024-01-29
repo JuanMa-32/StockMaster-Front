@@ -45,15 +45,7 @@ body{
   .form-control::placeholder {
     transition: transform 0.2s ease-in-out;
   }
-  
-  
-  
 
-
-input:focus, textarea:focus {
-    border-color: #63E6BE !important;
-    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5) !important;
-  }
 
   /* //MODAL */
   .abrir-modal {

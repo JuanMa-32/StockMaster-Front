@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AppContext } from './../../context/AppContext';
+import { Link } from "react-router-dom";
 
 
 export const ProductoForm = () => {
@@ -150,12 +151,16 @@ export const ProductoForm = () => {
                                     value={productoForm?.stockMinimo}/>
                                 </div>
                             </div>
+                            <button className="btn mt-3" style={{ background: '#63E6BE', color: 'white' }}
+                             type="submit">Enviar</button>
+                            <Link to={'/productos'} className="btn mt-3" >Cancelar</Link>
                         </div>
+                       
                     </div>
 
                 </div>
             </div>
-            <button type="submit">enviar</button>
+           
         </form>
     )
 }
