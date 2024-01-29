@@ -5,6 +5,7 @@ import { ClienteLista } from "./ClienteLista"
 import { useContext, useEffect, useState } from "react"
 
 import { AppContext } from "../../context/AppContext"
+import { Link } from "react-router-dom"
 
 export const ClientePrincipal = () => {
   const { todosClientes, clientes } = useContext(AppContext)
@@ -18,7 +19,7 @@ export const ClientePrincipal = () => {
     setbuscar(target.value)
   }
 
-  const filteredClientes = clientes.filter(
+  const filteredClientes = clientes?.filter(
     (cliente) =>
     cliente?.nombre.toLowerCase().includes(buscar.toLowerCase())
   );
@@ -42,9 +43,9 @@ export const ClientePrincipal = () => {
           <button className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}>
             <FontAwesomeIcon icon={faDownload} />
           </button>
-          <button className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}>
+          <Link to={'/clienteFormulario'} className="btn m-1" style={{ background: '#63E6BE', color: 'white' }}>
             <FontAwesomeIcon icon={faPlus} /> Cliente
-          </button>
+          </Link>
         </div>
       </div>
       <ClienteLista clientes={filteredClientes}/>
