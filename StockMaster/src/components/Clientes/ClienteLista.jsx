@@ -21,8 +21,9 @@ export const ClienteLista = ({clientes}) => {
       confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-       todosClientes();
+     
        await ClienteDelete(id)
+         todosClientes();
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
