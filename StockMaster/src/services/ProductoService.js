@@ -18,3 +18,19 @@ export const saveProducto = async (producto) => {
         throw error
     }
 }
+export const findAllCategoria = async()=>{
+    try {
+        const respuesta = await axios.get(`${URL}/categoria`)
+        return respuesta;
+    } catch (error) {
+        return error;
+    }
+}
+export const saveCategoria = async(categoria)=>{
+    try {
+        const respuesta = await axios.post(`${URL}/categoria`,categoria)
+        return respuesta;
+    } catch (error) {
+        return error;
+    }
+}

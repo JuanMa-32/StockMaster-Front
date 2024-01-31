@@ -34,7 +34,7 @@ export const FormUser = () => {
                     onChange={onInputChange}
                     name='nombre'
                     value={nombre} />
-                <label for="floatingPassword">Nombre</label>
+                <label htmlFor="floatingPassword">Nombre</label>
             </div>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control "
@@ -42,13 +42,13 @@ export const FormUser = () => {
                     name='email'
                     value={email}
                 />
-                <label for="floatingPassword">Email</label>
+                <label htmlFor="floatingPassword">Email</label>
             </div>
             <div className="form-floating">
                 <input type="password" className="form-control" id="floatingPassword" name='password'
                     value={password}
                     onChange={onInputChange} />
-                <label for="floatingPassword">Password</label>
+                <label htmlFor="floatingPassword">Password</label>
             </div>
             <hr />
             <button type="button" className="btn" style={{ background: '#efefef', color: 'black' }} onClick={handlerCloseForm}>Cancelar</button>

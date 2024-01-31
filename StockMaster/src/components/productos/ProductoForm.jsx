@@ -1,13 +1,27 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from './../../context/AppContext';
 import { Link } from "react-router-dom";
+import { findAllCategoria } from "../../services/ProductoService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+
+
 
 
 export const ProductoForm = () => {
    const {addProducto} = useContext(AppContext)
-
+    const [categoria,setCategoria]=useState([])
+   
     const [selectedImage, setSelectedImage] = useState(null);
     const [productoForm, setproductoForm] = useState({})
+    const categoriaFindAll = async()=>{
+        const respuesta = await findAllCategoria();
+        setCategoria(respuesta.data);
+console.log(respuesta.data);
+    }
+    useEffect(()=>{
+categoriaFindAll()
+    },[])
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -33,9 +47,14 @@ export const ProductoForm = () => {
         event.preventDefault()
         addProducto(productoForm);
     }
-
+    const agregarCategoria = ()=>{
+        console.log(productoForm);
+    }
 
     return (
+        <>
+       
+       
         <form onSubmit={onSubmit}>
             <div className="container mt-5">
                 <div className="row">
@@ -68,7 +87,7 @@ export const ProductoForm = () => {
                                      />
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <input type="number" class="form-control"
+                                <input type="number" className="form-control"
                                     placeholder="Precio"
                                     aria-label="Amount (to the nearest dollar)"
                                     name="precio"
@@ -78,7 +97,7 @@ export const ProductoForm = () => {
                             </div>
                             <h6>Opcionales</h6>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <input type="number" class="form-control"
+                                <input type="number" className="form-control"
                                     placeholder="Precio de promoción"
                                     aria-label="Amount (to the nearest dollar)"
                                     name="precioPromocion"
@@ -87,13 +106,18 @@ export const ProductoForm = () => {
                                     />
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
-                                <select class="form-select" id="inputGroupSelect01"  onChange={onInputChange}>
-                                    <option selected></option>
-                                    <option value="1">aca van las categorias</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <label className="input-group-text" htmlFor="inputGroupSelect01">Categorias</label>
+                                <select className="form-select" value={productoForm.categoria} name="categoria" id="inputGroupSelect01"  onChange={onInputChange}>
+                                    <option >Seleccione categoria</option>
+                                   {categoria.map(c=>(
+
+                                    <option key={c.id} value={c.id}>{c.nombre}</option>
+                                   )
+
+                                   )}
                                 </select>
+                                <button   className='btn'><FontAwesomeIcon icon={faArrowUp} style={{ color: '#4fd97d' }} /> </button>
+                              
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
                                 <input type="text" style={{ borderRadius: '8px' }}
@@ -122,8 +146,8 @@ export const ProductoForm = () => {
                                     value={productoForm?.costo}/>
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <label class="input-group-text" for="inputGroupSelect01">Vender por</label>
-                                <select class="form-select" id="inputGroupSelect01"  onChange={onInputChange}
+                                <label className="input-group-text" htmlFor="inputGroupSelect01">Vender por</label>
+                                <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}
                                     value={productoForm?.venderPor}>
                                     <option selected>Unidad</option>
                                     <option value="1">Fracción (Kilo, Litro, Metro, etc.)</option>
@@ -135,16 +159,16 @@ export const ProductoForm = () => {
                     <div className="col-md-6">
                         <div className="mb-4 p-4" style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
                             <h4>Stock</h4>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="number" class="form-control" 
+                            <div className="row">
+                                <div className="col">
+                                    <input type="number" className="form-control" 
                                     placeholder="Stock actual" aria-label="First name"
                                     name="stockActual"
                                     onChange={onInputChange}
                                     value={productoForm?.stockActual} />
                                 </div>
-                                <div class="col">
-                                    <input type="number" class="form-control" placeholder="Stock minimo" 
+                                <div className="col">
+                                    <input type="number" className="form-control" placeholder="Stock minimo" 
                                     aria-label="Last name" 
                                     name="stockMinimo"
                                     onChange={onInputChange}
@@ -162,5 +186,6 @@ export const ProductoForm = () => {
             </div>
            
         </form>
+        </>
     )
 }
