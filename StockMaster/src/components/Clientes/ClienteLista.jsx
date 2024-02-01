@@ -38,7 +38,7 @@ export const ClienteLista = ({clientes}) => {
 
   return (
     <div>
-      <table className="table table-hover table-light m-2">
+      <table className="table table-hover table-light m-2 table-borderless">
         <thead>
           <tr>
 

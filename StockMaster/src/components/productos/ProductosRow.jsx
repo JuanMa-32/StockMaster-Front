@@ -5,8 +5,18 @@ import { useNavigate } from 'react-router-dom'
 
 export const ProductosRow = ({ producto }) => {
     const navegate = useNavigate()
+    let verificar = false;
     const productoById = (idProducto) => {
-        navegate(`/producto/${idProducto}`)
+        if(verificar===true){
+            navegate(`/producto`)
+        }else {
+
+            navegate(`/producto/${idProducto}`)
+        }
+    }
+    const productoBy = () => {
+        verificar=true
+        
     }
     return (
         <>
@@ -16,7 +26,7 @@ export const ProductosRow = ({ producto }) => {
                 <td>{producto?.stockActual}</td>
                 <td>{producto?.precio}</td>
                 <td>-</td>
-                <td><FontAwesomeIcon icon={faTrash} /></td>
+                <td><button className='btn'onClick={() => productoBy()} ><FontAwesomeIcon icon={faTrash} /></button></td>
             </tr>
         </>
     )
