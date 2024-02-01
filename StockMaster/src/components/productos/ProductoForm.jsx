@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import { findAllCategoria } from "../../services/ProductoService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { CategoriaModal } from "./CategoriaModal";
 
 
 
 
 export const ProductoForm = () => {
-   const {addProducto} = useContext(AppContext)
+   const {addProducto,   openModalCategoria,
+    cerrarModalCategoria,addCategoria,
+    visibleCategoria} = useContext(AppContext)
     const [categoria,setCategoria]=useState([])
    
     const [selectedImage, setSelectedImage] = useState(null);
@@ -47,9 +50,7 @@ categoriaFindAll()
         event.preventDefault()
         addProducto(productoForm);
     }
-    const agregarCategoria = ()=>{
-        console.log(productoForm);
-    }
+   
 
     return (
         <>
@@ -117,15 +118,11 @@ categoriaFindAll()
 
                                    )}
 
-                                <label className="input-group-text" for="inputGroupSelect01">Categorias</label>
-                                <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}>
-                                    <option selected></option>
-                                    <option value="1">aca van las categorias</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                               
 
                                 </select>
-                                <button   className='btn'><FontAwesomeIcon icon={faArrowUp} style={{ color: '#4fd97d' }} /> </button>
+                                
+                                <button onClick={()=>openModalCategoria()} type="button"   className='btn'><FontAwesomeIcon icon={faArrowUp} style={{ color: '#4fd97d' }} /> </button>
                               
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">

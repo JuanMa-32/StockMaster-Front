@@ -31,6 +31,10 @@ export const AppProvider = ({ children }) => {
         //FUNCIONES
         getProductos,
         addProducto,
+        openModalCategoria,
+        cerrarModalCategoria,
+        visibleCategoria,
+        addCategoria,
         //VARIABLES
         productos
     } = useProducto();
@@ -40,7 +44,8 @@ export const AppProvider = ({ children }) => {
         getTransacciones,
         vender,
         //VARIABLES
-        transacciones
+        transacciones,
+       
     } = UseTransaccion();
 
     const {
@@ -76,7 +81,10 @@ export const AppProvider = ({ children }) => {
                 addProducto,
                 //VARIABLES
                 productos,
-
+                openModalCategoria,
+                cerrarModalCategoria,
+                visibleCategoria,
+                addCategoria,
                 //clientes
                 addCliente,
                 todosClientes,
