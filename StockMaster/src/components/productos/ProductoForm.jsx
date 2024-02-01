@@ -106,6 +106,7 @@ categoriaFindAll()
                                     />
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
+
                                 <label className="input-group-text" htmlFor="inputGroupSelect01">Categorias</label>
                                 <select className="form-select" value={productoForm.categoria} name="categoria" id="inputGroupSelect01"  onChange={onInputChange}>
                                     <option >Seleccione categoria</option>
@@ -115,6 +116,14 @@ categoriaFindAll()
                                    )
 
                                    )}
+
+                                <label className="input-group-text" for="inputGroupSelect01">Categorias</label>
+                                <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}>
+                                    <option selected></option>
+                                    <option value="1">aca van las categorias</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+
                                 </select>
                                 <button   className='btn'><FontAwesomeIcon icon={faArrowUp} style={{ color: '#4fd97d' }} /> </button>
                               
@@ -146,7 +155,11 @@ categoriaFindAll()
                                     value={productoForm?.costo}/>
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
+
                                 <label className="input-group-text" htmlFor="inputGroupSelect01">Vender por</label>
+
+                                <label className="input-group-text" for="inputGroupSelect01">Vender por</label>
+
                                 <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}
                                     value={productoForm?.venderPor}>
                                     <option selected>Unidad</option>

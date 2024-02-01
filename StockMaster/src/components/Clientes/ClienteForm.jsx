@@ -153,9 +153,9 @@ export const ClienteForm = () => {
                                 <div className="col-6 mb-3 d-flex mx-auto">
                                     <button className='btn ' style={{ background: "#63E6BE", color: 'white' }}>Nuevo pedido</button>
                                 </div>
-                                {!id ? <button onClick={guardar} className='btn mt-3' style={{ background: "#63E6BE", color: 'white' }}>Nuevo Cliente</button> :
-                                    <button onClick={editar} className='btn mt-3' style={{ background: "#63E6BE", color: 'white' }}>Actualizar Cliente</button>}
-                                <Link to={'/clientePrincipal'} className="btn mt-3" >Cancelar</Link>
+                                {!id ? <button onClick={guardar} className='btn mt-3 mx-3' style={{ background: "#63E6BE", color: 'white' }}>Nuevo Cliente</button> :
+                                    <button onClick={editar} className='btn mt-3 mx-3' style={{ background: "#63E6BE", color: 'white' }}>Actualizar Cliente</button>}
+                                <Link to={'/clientePrincipal'} className="btn mt-3 btn-light" >Cancelar</Link>
                             </div>
                         </div>
                     </div>

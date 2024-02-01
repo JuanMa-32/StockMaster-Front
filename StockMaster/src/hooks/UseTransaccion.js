@@ -14,10 +14,15 @@ export const UseTransaccion = () => {
             payload: response.data
         })
     }
+    const vender = async (productos,total) => {
+console.log(productos);
+console.log(total);
+    }
 
     return {
         //fUNCIONES
         getTransacciones,
+        vender,
         //VARIABLES
         transacciones
     }
