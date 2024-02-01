@@ -1,6 +1,6 @@
+body {
+  background-color: #f8f8f8;
 
-body{
-    background-color: #f8f8f8;
 }
 
 .content-container {
@@ -9,89 +9,140 @@ body{
 }
 
 .photo-upload-label {
-    display: inline-block;
-    position: relative;
-    width: 150px; /* Ajusta según sea necesario */
-    height: 200px; /* Ajusta según sea necesario */
-    border: 2px dashed #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .selected-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .upload-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-size: 14px;
-    color: #777;
-  }
-  
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  /* Ajusta según sea necesario */
+  height: 200px;
+  /* Ajusta según sea necesario */
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.selected-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  color: #777;
+}
+
 /* Estilo personalizado para el foco en el input */
 .form-control:focus::placeholder {
-    transform: translateY(-50%);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  /* Estilo para el placeholder cuando no está enfocado */
-  .form-control::placeholder {
-    transition: transform 0.2s ease-in-out;
-  }
-
-
-  /* //MODAL */
-  .abrir-modal {
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease-in-out;
 }
- 
+
+/* Estilo para el placeholder cuando no está enfocado */
+.form-control::placeholder {
+  transition: transform 0.2s ease-in-out;
+}
+
+
+/* //MODAL */
+.abrir-modal {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
 .animacion {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
 }
- 
+
 .fadeIn {
-    animation-name: fadeIn;
-    -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
 }
+
 @keyframes fadeIn {
-    0% {
-        opacity: 0
-    }
- 
-    to {
-        opacity: 1
-    }
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }
+
 @-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0
-    }
- 
-    to {
-        opacity: 1
-    }
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 
+.card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 5px;
+}
 
+.card img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+}
 
+.card-footer {
+  background-color: #455d84;
+  color: white;
+  padding: 10px;
+}
 
+.button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+}
 
+.button-container button {
+  margin-bottom: 5px;
+  background-color: #63e6be;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
 
+.button-container button:hover {
+  background-color: #4cae98;
+}
 
+.button-container span {
+  margin-bottom: 5px;
+  background-color: #455d84;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: default;
+}

@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { CarroDeCompras } from './CarroDeCompras'
 import { ProductosCard } from './ProductosCard';
+import { AppContext } from './../../context/AppContext';
 
 export const Vender = () => {
+    const { productos, getProductos } = useContext(AppContext)
+    useEffect(() => {
+        getProductos()
+    }, [])
+
     return (
         <>
             <div >
@@ -28,22 +34,11 @@ export const Vender = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
-                            <ProductosCard />
+                            {productos.map(p =>
+                                <div className="col-3" key={p.id}>
+                                    <ProductosCard producto={p} />
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="col-md-3" style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>

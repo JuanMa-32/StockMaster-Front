@@ -68,7 +68,7 @@ export const ProductoForm = () => {
                                      />
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <input type="number" class="form-control"
+                                <input type="number" className="form-control"
                                     placeholder="Precio"
                                     aria-label="Amount (to the nearest dollar)"
                                     name="precio"
@@ -78,7 +78,7 @@ export const ProductoForm = () => {
                             </div>
                             <h6>Opcionales</h6>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <input type="number" class="form-control"
+                                <input type="number" className="form-control"
                                     placeholder="Precio de promoción"
                                     aria-label="Amount (to the nearest dollar)"
                                     name="precioPromocion"
@@ -87,8 +87,8 @@ export const ProductoForm = () => {
                                     />
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
-                                <select class="form-select" id="inputGroupSelect01"  onChange={onInputChange}>
+                                <label className="input-group-text" for="inputGroupSelect01">Categorias</label>
+                                <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}>
                                     <option selected></option>
                                     <option value="1">aca van las categorias</option>
                                     <option value="2">Two</option>
@@ -122,8 +122,8 @@ export const ProductoForm = () => {
                                     value={productoForm?.costo}/>
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-                                <label class="input-group-text" for="inputGroupSelect01">Vender por</label>
-                                <select class="form-select" id="inputGroupSelect01"  onChange={onInputChange}
+                                <label className="input-group-text" for="inputGroupSelect01">Vender por</label>
+                                <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}
                                     value={productoForm?.venderPor}>
                                     <option selected>Unidad</option>
                                     <option value="1">Fracción (Kilo, Litro, Metro, etc.)</option>
@@ -135,16 +135,16 @@ export const ProductoForm = () => {
                     <div className="col-md-6">
                         <div className="mb-4 p-4" style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
                             <h4>Stock</h4>
-                            <div class="row">
-                                <div class="col">
-                                    <input type="number" class="form-control" 
+                            <div className="row">
+                                <div className="col">
+                                    <input type="number" className="form-control" 
                                     placeholder="Stock actual" aria-label="First name"
                                     name="stockActual"
                                     onChange={onInputChange}
                                     value={productoForm?.stockActual} />
                                 </div>
-                                <div class="col">
-                                    <input type="number" class="form-control" placeholder="Stock minimo" 
+                                <div className="col">
+                                    <input type="number" className="form-control" placeholder="Stock minimo" 
                                     aria-label="Last name" 
                                     name="stockMinimo"
                                     onChange={onInputChange}

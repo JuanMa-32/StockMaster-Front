@@ -4,6 +4,8 @@ import { AppContext } from "./AppContext"
 import { useProducto } from "../hooks/useProducto";
 import { UseCliente } from "../hooks/UseCliente";
 import { UseTransaccion } from './../hooks/UseTransaccion';
+import { useItemsCarro } from "../hooks/useItemsCarro";
+import { useVenta } from "../hooks/useVenta";
 
 
 
@@ -36,9 +38,25 @@ export const AppProvider = ({ children }) => {
     const {
         //fUNCIONES
         getTransacciones,
+        vender,
         //VARIABLES
         transacciones
     } = UseTransaccion();
+
+    const {
+        cartItems,
+        handlerAddProductCart,
+        handlerDeleteProductCart,
+        restarProducto,
+
+    } = useItemsCarro();
+    const {
+        setVentaCarro,
+        ventaFinish,
+        modalView,
+        handlerOpenModal,
+        handlerCloseModal
+    } = useVenta()
     return (
         <AppContext.Provider value={
             {
@@ -68,8 +86,22 @@ export const AppProvider = ({ children }) => {
                 //TRANSACCIONES
                 //fUNCIONES
                 getTransacciones,
+                vender,
                 //VARIABLES
-                transacciones
+                transacciones,
+
+                //CARRO
+                cartItems,
+                handlerAddProductCart,
+                handlerDeleteProductCart,
+                restarProducto,
+
+                //VENTA
+                setVentaCarro,
+                ventaFinish,
+                modalView,
+                handlerOpenModal,
+                handlerCloseModal
 
             }
         }>

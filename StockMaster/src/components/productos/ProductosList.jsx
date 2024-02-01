@@ -10,7 +10,7 @@ export const ProductosList = ({productos}) => {
             {productos.length === 0 ?
                 (<h1 style={{ textAlign: 'center', marginTop: '120px' }}>¿Qué tal adicionar su primer producto?</h1>)
                 :
-                (<table className="table table-hover table-light" >
+                (<table className="table table-hover table-light table-borderless" >
                     <thead >
                         <tr >
                             <th className="col-3" style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Producto</th>
