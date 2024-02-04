@@ -12,7 +12,7 @@ export const UsuarioList = () => {
 
     return (
         <>
-            <table className="table table-hover table-light table-borderless" >
+            <table className="table table-hover table-light caption-top" >
                 <thead >
                     <tr >
                         <th className="col-6"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Nombre</th>

@@ -7,7 +7,7 @@ export const TransaccionList = ({ventas}) => {
     
   return (
     <>
-            <table className="table table-hover table-light mt-3 table-borderless" >
+            <table className="table table-hover table-light mt-3 caption-top" >
                 <thead >
                     <tr >
                         <th style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Código</th>

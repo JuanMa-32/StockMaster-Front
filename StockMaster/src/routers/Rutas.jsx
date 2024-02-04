@@ -28,7 +28,7 @@ export const Rutas = () => {
           <Sidebar />
           <div className='content-container'>
             <Routes>
-              <Route path="/vender" element={<VentaPage />}> </Route>
+              <Route path="/vender" element={<VentaPage />}/>
               <Route path="/" element={<Navigate to="/vender" />} />
               <Route path="/usuarios" element={<UsuariosPage />}></Route>
               <Route path="/clientePrincipal" element={<ClientePage />}></Route>

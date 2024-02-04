@@ -6,6 +6,7 @@ body {
 .content-container {
   flex-grow: 1;
   padding: 20px;
+  margin-left: 290px;
 }
 
 .photo-upload-label {
@@ -110,7 +111,7 @@ body {
 }
 
 .card-footer {
-  background-color: #455d84;
+  background-color: #495366;
   color: white;
   padding: 10px;
 }
@@ -145,4 +146,22 @@ body {
   border-radius: 5px;
   padding: 5px;
   cursor: default;
+}
+
+
+.selected-row {
+  background-color: #63E6BE; /* o cualquier otro color de tu elección */
+  color: white;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  min-height: 100vh;
+  background: #373644;
+  overflow-y: auto;
 }

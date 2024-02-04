@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { ListClient } from './ListClient'
 import { AppContext } from '../../context/AppContext'
 
-export const ModalSeleccionarClient = () => {
-    const {handlerCloseModal}=useContext(AppContext)
+export const ModalSeleccionarClient = ({ seleccionarClient }) => {
+    const { handlerCloseModal } = useContext(AppContext)
     return (
         <>
             <div className='abrir-modal animacion fadeIn'>
@@ -16,7 +16,7 @@ export const ModalSeleccionarClient = () => {
                                 <button type="button" onClick={() => handlerCloseModal()} className="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                             </div>
                             <div className="modal-body">
-                               <ListClient></ListClient>
+                                <ListClient seleccionarClient={seleccionarClient}></ListClient>
                             </div>
 
                         </div>

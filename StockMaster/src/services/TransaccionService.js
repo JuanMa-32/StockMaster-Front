@@ -9,3 +9,11 @@ export const findAllTransacciones = async () => {
         console.log(error);
     }
 }
+export const vender = async (venta) => {
+try {
+    const response = await axios.post(`${URL}`,venta)
+    return response
+} catch (error) {
+    console.log(error);
+}
+}

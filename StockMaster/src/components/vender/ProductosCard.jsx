@@ -23,7 +23,7 @@ export const ProductosCard = ({ producto }) => {
     handlerDeleteProductCart(producto.id)
   };
   return (
-    <div className="card">
+    <div className="card" >
       <div className="button-container">
         <button className="btn btn-success" onClick={handleIncrement}>
           <FontAwesomeIcon icon={faPlus} />
