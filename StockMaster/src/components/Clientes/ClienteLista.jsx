@@ -39,7 +39,7 @@ export const ClienteLista = ({clientes}) => {
 
   return (
     <div>
-      <table className="table table-hover table-light m-2 table-borderless">
+      <table className="table table-hover table-light m-2 caption-top">
         <thead>
           <tr>
 
@@ -49,6 +49,7 @@ export const ClienteLista = ({clientes}) => {
             <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}>Saldo actual</th>
             <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}></th>
             <th scope="col"  style={{ color: '#92939e', fontfamily: 'Kanit, sans-serif' }}></th>
+           
 
           </tr>
         </thead>
@@ -60,10 +61,7 @@ export const ClienteLista = ({clientes}) => {
               <td>{c.telefono}</td>
               <td>{c.email}</td>
               <td>completar</td>
-              <td></td>
-              <td>
-               obs
-              </td>
+              <td>obs</td>
               <td>
                 <FontAwesomeIcon onClick={()=>eliminarCliente(c.id)} icon={faTrash} />
               </td>

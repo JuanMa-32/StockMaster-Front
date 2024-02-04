@@ -10,7 +10,7 @@ export const itemsReducer = (state = [], action) => {
                 }
             ];
         case 'updateCantidadProductoCarro':
-            
+
             return state.map((i) => {
                 if (i.product.id === action.payload.id) {
                     return {
@@ -20,8 +20,8 @@ export const itemsReducer = (state = [], action) => {
                 }
                 return i;
             });
-            case 'restarCantidadProductoCarro':
-            
+        case 'restarCantidadProductoCarro':
+
             return state.map((i) => {
                 if (i.product.id === action.payload.id) {
                     return {
@@ -33,7 +33,10 @@ export const itemsReducer = (state = [], action) => {
             });
         case 'deleteProductoCarro':
             return state.filter((i) => i.product.id !== action.payload);
-    
+
+        case 'vaciarCarro':
+            return []
+
         default:
             return state;
     }

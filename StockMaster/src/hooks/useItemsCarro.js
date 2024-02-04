@@ -27,6 +27,11 @@ const restarProducto = (product) => {
             payload: product,
         });
 }
+const restablecerCarro = () => {
+    dispatch({
+        type:'vaciarCarro'
+    })
+}
 
 const handlerDeleteProductCart = (id) => {
     dispatch({
@@ -37,10 +42,12 @@ const handlerDeleteProductCart = (id) => {
 
   
     return {
-        cartItems,
+        //FUNCIONES
+        restablecerCarro,
         handlerAddProductCart,
         handlerDeleteProductCart,
         restarProducto,
-        
-  }
+        //VARIABLES
+        cartItems,
+    }
 }

@@ -49,10 +49,13 @@ export const AppProvider = ({ children }) => {
     } = UseTransaccion();
 
     const {
-        cartItems,
+        //FUNCIONES
+        restablecerCarro,
         handlerAddProductCart,
         handlerDeleteProductCart,
         restarProducto,
+        //VARIABLES
+        cartItems,
 
     } = useItemsCarro();
     const {
@@ -60,7 +63,11 @@ export const AppProvider = ({ children }) => {
         ventaFinish,
         modalView,
         handlerOpenModal,
-        handlerCloseModal
+        handlerCloseModal,
+        handlerOpenModalDescuento,
+        handlerCloseModalDescuento,
+        modalDescuento,
+        venta
     } = useVenta()
     return (
         <AppContext.Provider value={
@@ -99,17 +106,25 @@ export const AppProvider = ({ children }) => {
                 transacciones,
 
                 //CARRO
-                cartItems,
+                //FUNCIONES
+                restablecerCarro,
                 handlerAddProductCart,
                 handlerDeleteProductCart,
                 restarProducto,
+                //VARIABLES
+                cartItems,
+
 
                 //VENTA
                 setVentaCarro,
                 ventaFinish,
                 modalView,
                 handlerOpenModal,
-                handlerCloseModal
+                handlerCloseModal,
+                handlerOpenModalDescuento,
+                handlerCloseModalDescuento,
+                modalDescuento,
+                venta
 
             }
         }>
