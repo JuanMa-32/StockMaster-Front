@@ -12,12 +12,12 @@ export const Vender = () => {
 
     const onInputChange = ({ target }) => {
         setbuscar(target.value)
-    }
-
-    const filteredProductos = productos?.filter(
+      }
+    
+      const filteredProductos = productos?.filter(
         (producto) =>
-            producto?.nombre.toLowerCase().includes(buscar.toLowerCase())
-    );
+        producto?.nombre.toLowerCase().includes(buscar.toLowerCase())
+      );
 
     return (
         <>
@@ -40,13 +40,8 @@ export const Vender = () => {
                                     Categorías
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="catalogDropdown">
-                                    {options?.map((option) => (
-                                        <li key={option.id}>
-                                            <a className="dropdown-item" href="#">
-                                                {option?.name}
-                                            </a>
-                                        </li>
-                                    ))}
+                                    <li><a className="dropdown-item" href="#">Opción 1</a></li>
+                                    <li><a className="dropdown-item" href="#">Opción 2</a></li>
                                 </ul>
                             </div>
                         </div>

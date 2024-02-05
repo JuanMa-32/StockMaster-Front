@@ -152,11 +152,7 @@ categoriaFindAll()
                                     value={productoForm?.costo}/>
                             </div>
                             <div className="col-9 mb-4 d-flex mx-auto">
-
-                                <label className="input-group-text" htmlFor="inputGroupSelect01">Vender por</label>
-
                                 <label className="input-group-text" for="inputGroupSelect01">Vender por</label>
-
                                 <select className="form-select" id="inputGroupSelect01"  onChange={onInputChange}
                                     value={productoForm?.venderPor}>
                                     <option selected>Unidad</option>
