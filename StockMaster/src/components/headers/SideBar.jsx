@@ -48,11 +48,11 @@ export const Sidebar = () => {
                         </a>
                     </li>
                     <li>
-                        <NavLink to={"clientePrincipal"} className="nav-link text-white">
+                        <Link to={"clientePrincipal"} className="nav-link text-white">
                             <svg className="bi pe-none me-2" width="16" height="45"><use xlinkHref="#people-circle" /></svg>
                             <FontAwesomeIcon icon={faUser} style={{ marginRight: '8px' }} />
                             Clientes
-                        </NavLink>
+                        </Link>
                     </li>
                     <li>
                         <Link to={`/ventas`} className="nav-link text-white">

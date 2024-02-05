@@ -16,10 +16,7 @@ export const Transacciones = () => {
   }
   const filteredTransacciones = transacciones.filter(
     (transaccion) =>
-      transaccion?.cliente?.nombre.toLowerCase().includes(buscar.toLowerCase()) ||
-      (transaccion.productos && transaccion.productos.some(producto =>
-        producto?.nombre.toLowerCase().includes(buscar.toLowerCase())
-      ))
+    transaccion?.cliente.nombre.toLowerCase().includes(buscar.toLowerCase())
   );
 
   return (
@@ -29,7 +26,7 @@ export const Transacciones = () => {
           <input
             className="form-control me-2"
             type="search"
-            placeholder="Nombre del cliente o producto"
+            placeholder="Nombre del cliente "
             aria-label="Search"
             onChange={onInputChange}
             value={buscar}
