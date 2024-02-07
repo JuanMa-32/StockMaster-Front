@@ -31,12 +31,14 @@ export const AppProvider = ({ children }) => {
         //FUNCIONES
         getProductos,
         addProducto,
+        categoriaFindAll,
+        //VARIABLES
+        productos,
         openModalCategoria,
         cerrarModalCategoria,
         visibleCategoria,
         addCategoria,
-        //VARIABLES
-        productos
+        categorias
     } = useProducto();
 
     const {
@@ -45,7 +47,7 @@ export const AppProvider = ({ children }) => {
         vender,
         //VARIABLES
         transacciones,
-       
+
     } = UseTransaccion();
 
     const {
@@ -86,12 +88,15 @@ export const AppProvider = ({ children }) => {
                 //FUNCIONES
                 getProductos,
                 addProducto,
+                categoriaFindAll,
                 //VARIABLES
                 productos,
                 openModalCategoria,
                 cerrarModalCategoria,
                 visibleCategoria,
                 addCategoria,
+                categorias,
+
                 //clientes
                 addCliente,
                 todosClientes,

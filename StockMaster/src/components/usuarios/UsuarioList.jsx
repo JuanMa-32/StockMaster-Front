@@ -7,10 +7,10 @@ export const UsuarioList = () => {
     const [totalVentas, setTotalVentas] = useState(0);
     useEffect(() => {
         loadingUsuarios()
-       
+      
+        const total = usuarios.reduce((acc, usuario) => acc + usuario.ventas, 0);
         setTotalVentas(total);
     }, [])
-    const total = usuarios.reduce((acc, usuario) => acc + usuario.ventas, 0);
     return (
         <>
             <table className="table table-hover table-light caption-top" >

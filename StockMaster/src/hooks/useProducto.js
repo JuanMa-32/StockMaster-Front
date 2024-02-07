@@ -1,24 +1,27 @@
 import { useReducer, useState } from "react"
 import { ProductoReducer } from "../reducers/ProductoReducer"
-import { findAllProductos, saveCategoria, saveProducto } from "../services/ProductoService"
-import { Await } from "react-router-dom";
+import { findAllCategoria, findAllProductos, saveCategoria, saveProducto } from "../services/ProductoService"
+import { categoriaReducer } from "../reducers/categoriaReducer";
+
 
 
 export const useProducto = () => {
-  const [visibleCategoria,setVisibleCategoria]=useState(false);
-  const [productos, dispatch] = useReducer(ProductoReducer,[])
+  const [visibleCategoria, setVisibleCategoria] = useState(false);
+  const [productos, dispatch] = useReducer(ProductoReducer, [])
+  const [categorias, dispatchCat] = useReducer(categoriaReducer, [])
+
   const openModalCategoria = () => {
     setVisibleCategoria(true)
-}
-const cerrarModalCategoria = () => {
+  }
+  const cerrarModalCategoria = () => {
     setVisibleCategoria(false)
-}
+  }
 
   const getProductos = async () => {
     const response = await findAllProductos();
     dispatch({
-        type: 'loadingProductos',
-        payload:response.data
+      type: 'loadingProductos',
+      payload: response.data
     })
   }
 
@@ -29,23 +32,33 @@ const cerrarModalCategoria = () => {
       console.log(error);
     }
   }
-  const addCategoria = async (categoria)=>{
+  const categoriaFindAll = async()=>{
+    const respuesta = await findAllCategoria();
+    dispatchCat({
+      type:'loadingCategorias',
+      payload:respuesta.data
+    })
+}
+  const addCategoria = async (categoria) => {
     try {
-      return respuesta= await saveCategoria(categoria);
+      return respuesta = await saveCategoria(categoria);
     } catch (error) {
       return error;
     }
   }
-  
-    return {
-        //FUNCIONES
-        getProductos,
-        addProducto,
-        //VARIABLES
-        productos,
-        openModalCategoria,
-        cerrarModalCategoria,
-        visibleCategoria,
-        addCategoria,
+
+  return {
+    //FUNCIONES
+    getProductos,
+    addProducto,
+    categoriaFindAll,
+    //VARIABLES
+    productos,
+    openModalCategoria,
+    cerrarModalCategoria,
+    visibleCategoria,
+    addCategoria,
+    categorias
+
   }
 }
