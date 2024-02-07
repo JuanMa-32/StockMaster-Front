@@ -4,20 +4,26 @@ import { ProductosCard } from './ProductosCard';
 import { AppContext } from './../../context/AppContext';
 
 export const Vender = () => {
-    const { productos, getProductos, cartItems } = useContext(AppContext)
+    const { productos, getProductos, cartItems, categorias, categoriaFindAll } = useContext(AppContext)
     const [buscar, setbuscar] = useState('')
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
     useEffect(() => {
         getProductos()
+        categoriaFindAll()
     }, [])
 
     const onInputChange = ({ target }) => {
         setbuscar(target.value)
-      }
-    
-      const filteredProductos = productos?.filter(
+    }
+    const onCategorySelect = (categoryId) => {
+        setCategoriaSeleccionada(categoryId);
+    };
+
+    const filteredProductos = productos?.filter(
         (producto) =>
-        producto?.nombre.toLowerCase().includes(buscar.toLowerCase())
-      );
+            producto?.nombre.toLowerCase().includes(buscar.toLowerCase()) &&
+            (categoriaSeleccionada === '' || producto?.categoria?.id === categoriaSeleccionada)
+    );
 
     return (
         <>
@@ -40,8 +46,12 @@ export const Vender = () => {
                                     Categorías
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="catalogDropdown">
-                                    <li><a className="dropdown-item" href="#">Opción 1</a></li>
-                                    <li><a className="dropdown-item" href="#">Opción 2</a></li>
+                                    {categorias.map((c) => (
+                                        <li key={c.id}>
+                                            <button className='btn' onClick={() => onCategorySelect(c.id)}>{c.nombre}</button>
+                                        </li>
+                                    ))}
+
                                 </ul>
                             </div>
                         </div>

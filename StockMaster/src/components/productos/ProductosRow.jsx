@@ -22,7 +22,7 @@ export const ProductosRow = ({ producto }) => {
         <>
             <tr onClick={() => productoById(producto.id)}>
                 <td >{producto.nombre} </td>
-                <td>{producto?.categoria}</td>
+                <td>{producto?.categoria?.nombre}</td>
                 <td>{producto?.stockActual}</td>
                 <td>{producto?.precio}</td>
                 <td>-</td>
