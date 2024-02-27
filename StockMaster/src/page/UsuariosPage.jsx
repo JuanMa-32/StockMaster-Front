@@ -3,6 +3,7 @@ import { NavBar } from '../components/headers/NavBar'
 import { Usuario } from '../components/usuarios/usuario'
 import { AppContext } from './../context/AppContext';
 import { ModalForm } from '../components/usuarios/ModalForm';
+import { ModalPassword } from '../components/headers/ModalPassword';
 
 
 export const UsuariosPage = () => {
@@ -12,6 +13,7 @@ export const UsuariosPage = () => {
 
   return (
     <>
+   
     {!visibleForm || <ModalForm />}
     <NavBar titulo={'Usuarios'}/>
     <Usuario/>

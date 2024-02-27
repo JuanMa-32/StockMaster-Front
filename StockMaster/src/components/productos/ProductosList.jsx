@@ -23,7 +23,7 @@ export const ProductosList = ({productos}) => {
                     </thead>
                     <tbody>
                         {productos?.map(producto =>
-                            <ProductosRow producto={producto} />
+                            <ProductosRow key={producto.id} producto={producto} />
                         )}
                     </tbody>
                 </table>

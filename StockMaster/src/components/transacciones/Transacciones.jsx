@@ -3,21 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useEffect, useState } from 'react'
 import { TransaccionList } from './TransaccionList'
 import { AppContext } from '../../context/AppContext'
+import { AuthContext } from '../../auth/context/AuthContext'
 
 export const Transacciones = () => {
   const [buscar, setbuscar] = useState('')
   const { getTransacciones, transacciones } = useContext(AppContext)
+  const {login} = useContext(AuthContext);
   useEffect(() => {
-    getTransacciones()
+    getTransacciones(login.idNegocio)
+    
   }, [])
 
   const onInputChange = ({ target }) => {
     setbuscar(target.value)
   }
-  const filteredTransacciones = transacciones.filter(
-    (transaccion) =>
-    transaccion?.cliente.nombre.toLowerCase().includes(buscar.toLowerCase())
-  );
+  let filteredTransacciones=[];
+  if(buscar === ''){
+    filteredTransacciones=transacciones;
+  }else if(transacciones.length >0){
+    filteredTransacciones = transacciones.filter(
+      (transaccion) =>
+      transaccion?.cliente.nombre.toLowerCase().includes(buscar.toLowerCase())
+    );
+  }
+
 
   return (
     <>
@@ -35,7 +44,7 @@ export const Transacciones = () => {
         </form>
         <div className="d-flex">
           <button className='btn me-2'><FontAwesomeIcon icon={faFilter} /> Filtro</button>
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <button className="btn dropdown-toggle" type="button" id="catalogDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <FontAwesomeIcon icon={faUserGroup} /> Catalogo
             </button>
@@ -45,7 +54,7 @@ export const Transacciones = () => {
               <li><a className="dropdown-item" href="#">Opción 2</a></li>
 
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
       <TransaccionList ventas={filteredTransacciones} />

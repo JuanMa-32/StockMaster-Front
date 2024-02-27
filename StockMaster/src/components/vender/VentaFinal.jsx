@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import { ModalSeleccionarClient } from './ModalSeleccionarClient';
 import { ModalDescuento } from './ModalDescuento';
+import { AuthContext } from '../../auth/context/AuthContext';
 
 export const VentaFinal = () => {
     const { ventaFinish, handlerOpenModal, modalView, cartItems, venta,
         clientes, todosClientes, modalDescuento, handlerOpenModalDescuento
         , handlerCloseModalDescuento, restablecerCarro
     } = useContext(AppContext)
+    const { login } = useContext(AuthContext);
 
     const [mostrarInfoAdicional, setMostrarInfoAdicional] = useState(false);
     const [ventaForm, setventaForm] = useState({})
@@ -21,9 +23,13 @@ export const VentaFinal = () => {
         })
     }, [])
     useEffect(() => {
-        todosClientes()
+        todosClientes(login.idNegocio)
     }, [])
-    const clienteFiltrado = clientes.find(cliente => cliente.id == ventaForm.idCliente);
+    let clienteFiltrado;
+    if (clientes.length > 0) {
+        clienteFiltrado = clientes?.find(cliente => cliente.id == ventaForm.idCliente);
+    }
+
 
     const aplicarDescuento = (descuento) => {
         setventaForm({
@@ -51,7 +57,7 @@ export const VentaFinal = () => {
     }
     const onSubmit = (event) => {
         event.preventDefault();
-        ventaFinish(ventaForm)
+        ventaFinish(ventaForm, login.idNegocio)
         restablecerCarro()
     }
     return (
@@ -60,7 +66,7 @@ export const VentaFinal = () => {
 
 
             <div className="row mx-auto">
-                <div className="col-md-5">
+                <div className="col-md-6">
                     {!modalView || <ModalSeleccionarClient seleccionarClient={seleccionarClient} />}
                     <div className='mb-3 p-4' style={{ background: 'white', width: '100%', padding: '10px', borderRadius: '10px', position: 'relative' }}>
                         {ventaForm.idCliente ? (
@@ -76,7 +82,7 @@ export const VentaFinal = () => {
                         ) : (
                             <>
                                 <h5 className="mb-0">Cliente</h5>
-                                <button type="button" className="btn btn-light" onClick={handlerOpenModal} style={{ position: 'absolute', top: '10px', right: '10px' }}>
+                                <button type="button" className="btn btn-light" onClick={handlerOpenModal} style={{ position: 'absolute', top: '10px', right: '10px', backgroundColor: '#63E6BE', color: 'white' }}>
                                     <FontAwesomeIcon icon={faPlus} />
                                 </button>
                             </>
@@ -121,7 +127,7 @@ export const VentaFinal = () => {
                     </div>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <div className="mb-3 p-4" style={{ background: 'white', width: '100%', padding: '10px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between' }}>
                         <div>
                             <h5>Resumen del pedido</h5>
@@ -158,7 +164,7 @@ export const VentaFinal = () => {
                                 type="radio"
                                 name="metodoPago"
                                 value="efectivo"
-                                checked={ventaForm.metodoPago === 'Efectivo'}
+                                checked={ventaForm.metodoPago === 'efectivo'}
                                 onChange={onInputChange}
                             />
                             <label className="form-check-label" htmlFor="flexRadioDefault1">
@@ -172,7 +178,7 @@ export const VentaFinal = () => {
                                 type="radio"
                                 name="metodoPago"
                                 value="debito"
-                                checked={ventaForm.metodoPago === 'Debito'}
+                                checked={ventaForm.metodoPago === 'debito'}
                                 onChange={onInputChange}
                             />
                             <label className="form-check-label" htmlFor="flexRadioDefault2">
@@ -186,7 +192,7 @@ export const VentaFinal = () => {
                                 type="radio"
                                 name="metodoPago"
                                 value="credito"
-                                checked={ventaForm.metodoPago === 'Credito'}
+                                checked={ventaForm.metodoPago === 'credito'}
                                 onChange={onInputChange}
                             />
                             <label className="form-check-label" htmlFor="flexRadioDefault3">
@@ -200,7 +206,7 @@ export const VentaFinal = () => {
                                 type="radio"
                                 name="metodoPago"
                                 value="otros"
-                                checked={ventaForm.metodoPago === 'Otros'}
+                                checked={ventaForm.metodoPago === 'otros'}
                                 onChange={onInputChange}
                             />
                             <label className="form-check-label" htmlFor="flexRadioDefault4">
@@ -208,10 +214,11 @@ export const VentaFinal = () => {
                                 Otros
                             </label>
                         </div>
-
                         <button onClick={onSubmit} className='btn mt-3 mx-2' style={{ background: "#63E6BE", color: 'white' }}><FontAwesomeIcon icon={faDollarSign} /> Finalizar venta</button>
                         <Link to={'/clientePrincipal'} className="btn mt-3 btn-light" >Descartar venta</Link>
+
                     </div>
+
                 </div>
             </div>
 

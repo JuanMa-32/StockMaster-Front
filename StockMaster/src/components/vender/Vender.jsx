@@ -2,13 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CarroDeCompras } from './CarroDeCompras'
 import { ProductosCard } from './ProductosCard';
 import { AppContext } from './../../context/AppContext';
+import { AuthContext } from './../../auth/context/AuthContext';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 export const Vender = () => {
     const { productos, getProductos, cartItems, categorias, categoriaFindAll } = useContext(AppContext)
+    const { login } = useContext(AuthContext)
     const [buscar, setbuscar] = useState('')
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
     useEffect(() => {
-        getProductos()
+        getProductos(login.idNegocio)
         categoriaFindAll()
     }, [])
 
@@ -18,12 +23,16 @@ export const Vender = () => {
     const onCategorySelect = (categoryId) => {
         setCategoriaSeleccionada(categoryId);
     };
-
-    const filteredProductos = productos?.filter(
-        (producto) =>
-            producto?.nombre.toLowerCase().includes(buscar.toLowerCase()) &&
-            (categoriaSeleccionada === '' || producto?.categoria?.id === categoriaSeleccionada)
-    );
+    let filteredProductos;
+    if (buscar === '') {
+        filteredProductos = productos
+    } else if(productos.length >0) {
+        filteredProductos = productos?.filter(
+            (producto) =>
+                producto?.nombre.toLowerCase().includes(buscar.toLowerCase()) &&
+                (categoriaSeleccionada === '' || producto?.categoria?.id === categoriaSeleccionada)
+        );
+    }
 
     return (
         <>
@@ -41,7 +50,7 @@ export const Vender = () => {
                                     value={buscar}
                                 />
                             </form>
-                            <div className="dropdown">
+                            {/* <div className="dropdown">
                                 <button className="btn dropdown-toggle" type="button" id="catalogDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categorías
                                 </button>
@@ -53,20 +62,40 @@ export const Vender = () => {
                                     ))}
 
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
-                        <div className="row">
-                            {filteredProductos.map(p =>
+                        {filteredProductos?.length > 0 ? (<div className="row">
+                            {filteredProductos?.map(p =>
                                 <div className="col-3" key={p.id}>
                                     <ProductosCard producto={p} />
                                 </div>
                             )}
-                        </div>
+                            <div className="col-3">
+                                <Link className="card" style={{ backgroundColor: '#63E6BE',height:'100%' }} to={'/producto/create'}>
+                                    <div className="card-body d-flex justify-content-center align-items-center">
+                                        <button className="btn  btn-block btn-lg" style={{ color: 'white' }} >
+                                            <FontAwesomeIcon icon={faPlus} />
+                                        </button>
+                                    </div>
+                                </Link>
+                            </div>
+                        </div>) : (
+                            <div className="col-3"> 
+                              <Link className="card" style={{ backgroundColor: '#63E6BE',height:'100%' }} to={'/producto/create'}> 
+                                <div className="card-body d-flex justify-content-center align-items-center">
+                                  <button className="btn btn-block btn-lg" style={{ color: 'white' }}>
+                                    <FontAwesomeIcon icon={faPlus} />
+                                  </button>
+                                </div>
+                              </Link>
+                            </div>
+                            )}
+
                     </div>
-                    <div className="col-3" style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', minHeight: '85vh' }}>
+                    <div className="col-3 " style={{ background: 'white', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', minHeight: '85vh',marginLeft:'15px' }}>
                         {cartItems.length > 0 ?
                             (<CarroDeCompras />) :
-                            (<div className="d-flex align-items-center justify-content-center" style={{ height: '100%' }}>
+                            (<div className="d-flex align-items-center justify-content-center " style={{ height: '100%' }}>
                                 <div>
                                     <h4>Tu carrito está vacío</h4>
                                     <p>Cliclea en los artículos para añadirlos a la venta.</p>

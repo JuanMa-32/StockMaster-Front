@@ -15,13 +15,13 @@ export const TransaccionRow = ({ transaccion }) => {
     const navegate = useNavigate()
 
     const handleClick = (transaccionId) => {
-        navegate(`/usuarios/${transaccionId}`)
+        navegate(`/venta/${transaccionId}`)
     };
 
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <tr onClick={() => handleClick(1)}>
+            <tr onClick={() => handleClick(transaccion.id)} className="clickable-row">
                 <td >{transaccion.id} </td>
                 <td >{fechaFormateada},<b> {horaFormateada}</b> </td>
                 <td >{transaccion?.cliente?.nombre} </td>
@@ -50,7 +50,6 @@ export const TransaccionRow = ({ transaccion }) => {
                     </Modal>
                 </td>
                 <td > </td>
-
             </tr>
         </>
     )

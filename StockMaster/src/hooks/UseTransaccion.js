@@ -6,17 +6,16 @@ import { findAllTransacciones } from "../services/TransaccionService";
 export const UseTransaccion = () => {
     const [transacciones, dispatch] = useReducer(TransaccionReducer, [])
 
-    const getTransacciones = async () => {
-        const response = await findAllTransacciones();
-        console.log(response.data);
+    const getTransacciones = async (idNegocio) => {
+        const response = await findAllTransacciones(idNegocio);
         dispatch({
             type: 'loadingVentas',
             payload: response.data
         })
     }
-    const vender = async (productos,total) => {
-console.log(productos);
-console.log(total);
+    const vender = async (productos, total) => {
+        console.log(productos);
+        console.log(total);
     }
 
     return {

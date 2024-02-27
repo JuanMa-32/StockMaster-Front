@@ -4,18 +4,20 @@ import React, { useContext, useState } from 'react'
 import { AppContext } from './../../context/AppContext';
 
 export const ProductosCard = ({ producto }) => {
-  const { handlerAddProductCart, restarProducto, handlerDeleteProductCart } = useContext(AppContext)
+  const { handlerAddProductCart, restarProducto, handlerDeleteProductCart,calcularStock } = useContext(AppContext)
   const [cantidad, setCantidad] = useState(0);
 
   const handleIncrement = () => {
     setCantidad(cantidad + 1);
     handlerAddProductCart(producto)
+    calcularStock(producto,cantidad+1)
   };
 
   const handleDecrement = () => {
     if (cantidad > 0) {
       setCantidad(cantidad - 1);
       restarProducto(producto)
+      calcularStock(producto,cantidad-1)
     }
   };
   const handleTrashClick = () => {
@@ -45,8 +47,20 @@ export const ProductosCard = ({ producto }) => {
       </div>
       <img src="/card.png" alt="Nombre del Producto" />
       <div className="card-footer">
-        <h5>{producto.nombre}</h5>
-        <p>$ {producto.precio}</p>
+        {producto.precioPromocion ?
+          (<>
+            <h5 style={{ margin:'1px' }}>{producto.nombre}</h5>
+            <div>
+            $ {producto?.precioPromocion}
+            <div style={{ textDecoration: 'line-through',margin:'0px' }} > $ {producto.precio}</div>
+            </div>
+          </>)
+          :
+          (<>
+            <h5>{producto.nombre}</h5>
+            <p>$ {producto.precio}</p>
+          </>)}
+
       </div>
     </div>
   )

@@ -4,22 +4,30 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ProductosList } from './ProductosList';
 import { AppContext } from '../../context/AppContext';
+import { AuthContext } from './../../auth/context/AuthContext';
 
 export const Productos = () => {
   const { getProductos, productos } = useContext(AppContext)
+  const {login} = useContext(AuthContext)
   const [buscar, setbuscar] = useState('')
 
   useEffect(() => {
-    getProductos()
+    getProductos(login.idNegocio)
   }, [])
  
   const onInputChange = ({ target }) => {
     setbuscar(target.value)
   }
-  const filteredProductos = productos.filter(
-    (producto) =>
-      producto?.nombre.toLowerCase().includes(buscar.toLowerCase())
-  );
+  let filteredProductos=[];
+  if(buscar ===''){
+    filteredProductos = productos
+  }else if(productos.length >0) {
+    filteredProductos = productos?.filter(
+      (producto) =>
+        producto?.nombre.toLowerCase().includes(buscar.toLowerCase())
+    );
+  }
+   
   return (
     <>
       <div className="d-flex align-items-center justify-content-between mb-3" style={{ background: 'white', width: '100%', padding: '10px', borderRadius: '10px' }}>
@@ -32,9 +40,7 @@ export const Productos = () => {
             onChange={onInputChange}
             value={buscar}
           />
-          <button className="btn" type="submit" style={{ background: '#63E6BE', color: 'white' }}>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
+          
         </form>
 
         <div className="d-flex align-items-center">

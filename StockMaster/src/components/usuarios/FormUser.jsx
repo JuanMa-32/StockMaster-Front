@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../context/AppContext';
+import { AuthContext } from './../../auth/context/AuthContext';
 
 const userInit = {
     nombre: '',
@@ -9,9 +10,11 @@ const userInit = {
 
 export const FormUser = () => {
     const { handlerCloseForm, handlerAddUsuario } = useContext(AppContext);
-
+    const { login } = useContext(AuthContext)
+    const [errorUsuario, seterrorUsuario] = useState('')
     const [usuarioForm, setusuarioForm] = useState(userInit)
     const { nombre, email, password } = usuarioForm;
+
 
     const onInputChange = ({ target }) => {
         const { name, value } = target;
@@ -24,21 +27,29 @@ export const FormUser = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        handlerAddUsuario(usuarioForm);
+        if (nombre === '' || email === '' || password === '') {
+            seterrorUsuario('Completar campos vacios.')
+            return
+        }
+        seterrorUsuario('')
+        handlerAddUsuario(usuarioForm, login.idNegocio);
     }
 
     return (
         <form onSubmit={onSubmit}>
+            <p className='text-danger'>{errorUsuario}</p>
             <div className="form-floating mb-3">
                 <input type="text" className="form-control" id="floatingInput"
                     onChange={onInputChange}
                     name='nombre'
+                    style={{ borderColor: errorUsuario ? 'red' : '' }}
                     value={nombre} />
                 <label htmlFor="floatingPassword">Nombre</label>
             </div>
             <div className="form-floating mb-3">
                 <input type="email" className="form-control "
                     onChange={onInputChange}
+                    style={{ borderColor: errorUsuario ? 'red' : '' }}
                     name='email'
                     value={email}
                 />
@@ -47,6 +58,7 @@ export const FormUser = () => {
             <div className="form-floating">
                 <input type="password" className="form-control" id="floatingPassword" name='password'
                     value={password}
+                    style={{ borderColor: errorUsuario ? 'red' : '' }}
                     onChange={onInputChange} />
                 <label htmlFor="floatingPassword">Password</label>
             </div>
