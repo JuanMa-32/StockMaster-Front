@@ -1,0 +1,267 @@
+body {
+  background-color: #f8f8f8;
+
+}
+
+.content-container {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 290px;
+}
+
+.photo-upload-label {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  /* Ajusta según sea necesario */
+  height: 200px;
+  /* Ajusta según sea necesario */
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.selected-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Estilo personalizado para el foco en el input */
+.form-control:focus::placeholder {
+  transform: translateY(-50%);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Estilo para el placeholder cuando no está enfocado */
+.form-control::placeholder {
+  transition: transform 0.2s ease-in-out;
+}
+
+
+/* //MODAL */
+.abrir-modal {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.animacion {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+.card {
+  position: relative;
+  width: 100%; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-footer {
+  background-color: #495366;
+  color: white;
+  padding: 10px;
+}
+.button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container button {
+  margin-bottom: 5px;
+  background-color: #63e6be;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: #4cae98;
+}
+
+.button-container span {
+  margin-bottom: 5px;
+  background-color: #455d84;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: default;
+}
+
+
+.selected-row {
+  background-color: #63E6BE; /* o cualquier otro color de tu elección */
+  color: white;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  min-height: 100vh;
+  background:  #345f6a;
+  overflow-y: auto;
+}
+
+
+/* LOGIN */
+.login-page {
+ 
+  width: 100%;
+ 
+  margin-top: 120px;
+ 
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  background-color: #363636;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 550px;
+  max-width: 30rem;
+}
+
+
+
+.input {
+  
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.button {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #63E6BE;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #2dba6a;
+  
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: transparent;
+}
+
+
+.no-hover:hover {
+  background-color: #63E6BE;
+  color: white;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+/* sidebar estadisticas */
+.sidebar-stats {
+  width: 250px;
+  height: 100%;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar-stats ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-stats li {
+  padding: 10px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background-color: #ddd;
+}
+
+.section-content {
+  font-size: 14px;
+  color: #666;
+}
