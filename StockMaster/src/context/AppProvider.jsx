@@ -6,6 +6,7 @@ import { UseCliente } from "../hooks/UseCliente";
 import { UseTransaccion } from './../hooks/UseTransaccion';
 import { useItemsCarro } from "../hooks/useItemsCarro";
 import { useVenta } from "../hooks/useVenta";
+import { UseNegocio } from "../hooks/UseNegocio";
 
 
 
@@ -16,15 +17,23 @@ export const AppProvider = ({ children }) => {
         handlerCloseForm,
         handlerAddUsuario,
         loadingUsuarios,
+        handlerUsuarioSelected,
+        handlerOpenFormPassword,
+        handlerCloseFormPassword,
+        cambiarPassword,
         //VARIABLES
+        visibleModalPassword,
         visibleForm,
-        usuarios
+        usuarios,
+        usuarioSelected,
+
     } = useUsuario();
     const {
         addCliente,
         todosClientes,
+        deleteCliente,
         //VARIABLES
-
+        errorCliente,
         clientes
     } = UseCliente();
     const {
@@ -32,13 +41,19 @@ export const AppProvider = ({ children }) => {
         getProductos,
         addProducto,
         categoriaFindAll,
+        handlerProductoSelected,
+        eliminarProducto,
         //VARIABLES
         productos,
         openModalCategoria,
         cerrarModalCategoria,
         visibleCategoria,
         addCategoria,
-        categorias
+        categorias,
+        productoSelected,
+        errorProducto,
+        stockInsuficiente,
+        calcularStock
     } = useProducto();
 
     const {
@@ -60,6 +75,15 @@ export const AppProvider = ({ children }) => {
         cartItems,
 
     } = useItemsCarro();
+
+    const {
+        //FUNCIONES
+        saveConfiguraciones,
+        negocioSelected,
+        //VARAIBLES
+        negocio,
+
+    } = UseNegocio();
     const {
         setVentaCarro,
         ventaFinish,
@@ -69,7 +93,9 @@ export const AppProvider = ({ children }) => {
         handlerOpenModalDescuento,
         handlerCloseModalDescuento,
         modalDescuento,
-        venta
+        venta,
+        hanlderVentaSelected,
+        ventaSelected,
     } = useVenta()
     return (
         <AppContext.Provider value={
@@ -80,15 +106,24 @@ export const AppProvider = ({ children }) => {
                 handlerCloseForm,
                 handlerAddUsuario,
                 loadingUsuarios,
+                handlerUsuarioSelected,
+                handlerOpenFormPassword,
+                handlerCloseFormPassword,
+                cambiarPassword,
                 //VARIABLES
+                visibleModalPassword,
                 visibleForm,
                 usuarios,
+                usuarioSelected,
+
 
                 //PRODUCTOS
                 //FUNCIONES
                 getProductos,
                 addProducto,
                 categoriaFindAll,
+                handlerProductoSelected,
+                eliminarProducto,
                 //VARIABLES
                 productos,
                 openModalCategoria,
@@ -96,12 +131,18 @@ export const AppProvider = ({ children }) => {
                 visibleCategoria,
                 addCategoria,
                 categorias,
+                productoSelected,
+                errorProducto,
+                stockInsuficiente,
+                calcularStock,
 
                 //clientes
                 addCliente,
                 todosClientes,
+                deleteCliente,
                 //VARIABLES
                 clientes,
+                errorCliente,
 
                 //TRANSACCIONES
                 //fUNCIONES
@@ -129,7 +170,17 @@ export const AppProvider = ({ children }) => {
                 handlerOpenModalDescuento,
                 handlerCloseModalDescuento,
                 modalDescuento,
-                venta
+                venta,
+                hanlderVentaSelected,
+                ventaSelected,
+
+                //NEGOCIO
+                //FUNCIONES
+                saveConfiguraciones,
+                negocioSelected,
+                //VARAIBLES
+                negocio,
+
 
             }
         }>

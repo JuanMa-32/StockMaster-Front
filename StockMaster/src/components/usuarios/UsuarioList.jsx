@@ -1,16 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UsuarioRow } from './UsuarioRow'
 import { AppContext } from './../../context/AppContext';
+import { AuthContext } from './../../auth/context/AuthContext';
 
 export const UsuarioList = () => {
     const { loadingUsuarios, usuarios } = useContext(AppContext)
+    const {login} = useContext(AuthContext);
     const [totalVentas, setTotalVentas] = useState(0);
+   
     useEffect(() => {
-        loadingUsuarios()
-      
-        const total = usuarios.reduce((acc, usuario) => acc + usuario.ventas, 0);
-        setTotalVentas(total);
+        loadingUsuarios(login.idNegocio)
+        
     }, [])
+    useEffect(() => {
+        if (usuarios && usuarios.length > 0) {
+            const total = usuarios.reduce((total, usuario) => total + usuario.ventas, 0);
+            setTotalVentas(total);
+        }
+    }, [usuarios]);
     return (
         <>
             <table className="table table-hover table-light caption-top" >

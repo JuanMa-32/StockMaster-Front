@@ -4,6 +4,7 @@ import { AppContext } from './../../context/AppContext';
 
 export const Usuario = () => {
   const { handlerOpenForm } = useContext(AppContext);
+  
   return (
     <>
       <div style={{ background: 'white', borderRadius: '10px', padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginBottom: '16px' }}>

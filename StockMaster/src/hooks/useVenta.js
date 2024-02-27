@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { vender } from "../services/TransaccionService"
+import { findByIdVenta, vender } from "../services/TransaccionService"
 import { useNavigate } from "react-router-dom"
 import Swal from "sweetalert2"
 const ventaInit = {
@@ -8,7 +8,7 @@ const ventaInit = {
     metodoPago: '',
     observacion: '',
     descuento: 0,
-    idUsuario: 4,
+    idUsuario: 0,
     idCliente: 0,
     items: 0,
     productos: []
@@ -18,15 +18,21 @@ export const useVenta = () => {
     const [venta, setventa] = useState(ventaInit)
     const [modalView, setmodalView] = useState(false)
     const [modalDescuento, setmodalDescuento] = useState(false)
+    const [ventaSelected, setventaSelected] = useState({})
 
     const navigate = useNavigate();
+    const calculateTotalItem = (producto) => {
+        const precioUnitario = producto.product.precioPromocion ? producto.product.precioPromocion : producto.product.precio;
+        return precioUnitario * producto.quantity;
+    }
 
-    const setVentaCarro = (productos, total, subTotal, descuento, idCliente) => {
+
+    const setVentaCarro = (productos, total, subTotal, descuento, idCliente, idUser) => {
         const productosNecesarios = productos.map(producto => ({
             idProducto: producto.product.id,
-            precioTotalItem: producto.product.precio * producto.quantity,
+            precioTotalItem: calculateTotalItem(producto),
             nombreProducto: producto.product.nombre,
-            itemsProducto: producto.quantity
+            itemsProducto: producto.quantity,
         }));
         setventa({
             ...venta,
@@ -36,11 +42,17 @@ export const useVenta = () => {
             subTotal: subTotal,
             idCliente: idCliente,
             items: productos.length,
+            idUsuario: idUser
         })
     }
-    const ventaFinish = async (venta) => {
-        const response = await vender(venta)
-        Swal.fire('Venta concluida', '+ ' + venta.total, 'success')
+    const ventaFinish = async (venta, idNegocio) => {
+        const response = await vender(venta, idNegocio)
+        Swal.fire({
+            title: '¡Venta Concluida!',
+            html: `La venta se ha registrado exitosamente.<br>Total: $${venta.total}`,
+            icon: 'success'
+        });
+
         navigate(`/vender`)
     }
     const handlerOpenModal = () => {
@@ -55,6 +67,10 @@ export const useVenta = () => {
     const handlerCloseModalDescuento = () => {
         setmodalDescuento(false)
     }
+    const hanlderVentaSelected = async (id) => {
+        const response = await findByIdVenta(id);
+        setventaSelected(response.data)
+    }
 
     return {
         setVentaCarro,
@@ -65,7 +81,9 @@ export const useVenta = () => {
         handlerOpenModalDescuento,
         handlerCloseModalDescuento,
         modalDescuento,
-        venta
+        venta,
+        hanlderVentaSelected,
+        ventaSelected,
     }
 
 

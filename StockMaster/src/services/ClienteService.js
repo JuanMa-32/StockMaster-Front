@@ -1,10 +1,13 @@
 
 import axios from "axios"
-import { Await } from "react-router-dom"
-const url = 'http://localhost:8002'
-export const ClienteAll = async()=>{
+// const url = 'http://localhost:8002'
+// const URL_NEGOCIO = 'http://localhost:8005'
+const url = 'http://ec2-54-221-174-232.compute-1.amazonaws.com:8002'
+const URL_NEGOCIO = 'http://ec2-54-167-29-213.compute-1.amazonaws.com:8005'
+
+export const ClienteAll = async(idNegocio)=>{
     try {
-        const respuesta = await axios.get(url)
+        const respuesta = await axios.get(`${URL_NEGOCIO}/clientes/${idNegocio}`)
         return respuesta
     } catch (error) {
         return error;
@@ -20,32 +23,29 @@ export const ClienteFindById= async (id)=>{
     }
     
 }    
-export const ClienteSave = async (cliente)=>{
+export const ClienteSave = async (cliente,idNegocio)=>{
     try {
-      return await axios.post(url,cliente); 
-
+      return await axios.post(`${url}/${idNegocio}`,cliente); 
     } catch (error) {
-        return error;
+        throw error
     }
 
 }
 export const ClienteUpdate = async(cliente)=>{
-    console.log(cliente);
+   
     try {
-        console.log('hola');
         const respuesta= await axios.put(`${url}/${cliente.id}`,cliente)
         console.log(respuesta);
-        
     } catch (error) {
-        console.log(error);
-        return error;
+        throw error
     }
 }
-export const ClienteDelete = async (id)=>{
+export const ClienteDelete = async (id,idNegocio)=>{
     try {
-        return await axios.delete(`${url}/${id}`)
-    
+       
+        const response = await axios.delete(`${url}/${id}/${idNegocio}`)
+        return response
     } catch (error) {
-        return error;
+        console.log(error);;
     }
 }
